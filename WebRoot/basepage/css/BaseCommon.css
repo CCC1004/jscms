@@ -1,0 +1,134 @@
+@CHARSET "UTF-8";
+
+body
+{
+	font-size: 14px;	
+}
+td
+{
+	font-size: 14px;		
+}
+A  /*链接的颜色*/
+{   
+	color:#0000FF;   
+}
+
+.x-toolbar{
+	background:#d0def0 url(../images/toolbarbg.gif) repeat-x top left!important;
+	
+}
+.quickSearchTable{
+
+}
+.quickSearchTable th{
+	text-align: right;
+	height: 25px;
+}
+
+/*快速查询栏的字体*/
+.listview-quickSearch label,.listview-input{
+	font-size: 14px!important;		
+	max-width: 300px;
+}
+/*高级查询表格*/
+.listview-advSearch{
+	display: none;
+
+	margin: 0px;
+}
+/*高级查询表格的TD*/
+.listview-advSearch td{
+	padding: 0px;
+}
+
+.listview-grid{
+
+	width:100%;
+	height:100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+}
+
+.listview-btnArea{
+	height:100%;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.Btn , .listview-bBtn , .addview-bBtn , .updateview-bBtn, .chartview-bBtn{
+	/* display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px ;
+	background-color:#337ab7;
+	margin-left: 10px;
+	margin-right: 10px;	
+	padding-left:6px;
+	padding-right:6px;
+	background-color: #E3E9F2;
+	color: #000000;
+	height:24px;
+	border:1px #707070 solid;
+
+	font-size:14px;	
+	background-image:url(../images/btn.png); */
+	display: inline-block;
+    padding: 6px 24px;
+    margin-bottom: 0;
+    /* font-size: 14px; */
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    
+    border-radius: 0px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.listview-bBtn:hover , .addview-bBtn:hover , .updateview-bBtn:hover, .chartview-bBtn:hover{
+	color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+.errBox{
+	PADDING-RIGHT: 3px;
+	BORDER: #aaaaaa 1px solid;
+	PADDING-LEFT: 3px;
+	BACKGROUND: #F0F0F0;
+	PADDING-BOTTOM: 3px;
+	PADDING-TOP: 3px;
+
+	overflow: auto;
+	visibility:hidden;
+}
+.errMsg{
+	color : #FF3300;
+}

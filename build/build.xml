@@ -1,0 +1,36 @@
+<project name="HelloWorld">  
+	<property name="proj.home" value="${basedir}\.." />
+    <property name="source.dir" value="${proj.home}/src"/>
+    <property name="target.dir" value="${basedir}/bin"/>
+    <property name="library.dir" value="${proj.home}/WebRoot/WEB-INF/lib"/>
+	<property name="class.dir" value="${proj.home}/WebRoot/WEB-INF/classes" />  
+	<path id="libraries">
+        <fileset dir="${library.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>   
+    <target name="init">  
+        <mkdir dir="${basedir}/classes"/>  
+        <mkdir dir="${basedir}/demo"/>  
+        <echo message="init完成...."/>  
+    </target>  
+       
+    <target name="javac">  
+        <javac  srcdir="${source.dir}" destdir="${basedir}/classes" encoding="UTF-8">  
+        	<classpath refid="libraries"/>   
+        </javac>
+        <echo message="javac完成...."/>  
+    </target>  
+       
+    <target name="jar">  
+        <jar destfile="${basedir}/helloWorld.jar" basedir="${class.dir}"/>  
+        <echo message="jar完成...."/>  
+    </target>  
+	
+    <target name="javaDocs">  
+        <mkdir dir="./doc" />  
+        <javadoc packagenames="qlight.*" sourcepath="${source.dir}" destdir="./doc" encoding="UTF-8">  
+        </javadoc>  
+        <echo message="javaDocs完成...."/>  
+    </target>  
+</project>  

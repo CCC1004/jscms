@@ -1,0 +1,18 @@
+.tab
+{
+ margin:4px;
+ overflow:hidden;
+ border:0px solid #cccccc;
+}
+.menu{ height:26px; background:url('../../pageframe/images/home/menubj.gif') repeat-x; padding-left:12px;}
+.menu li{ height:26px; list-style:none; overflow:hidden; line-height:26px; text-align:center; float:left; font-size:14px; margin-right:3px; cursor:pointer; padding-left:15px;}
+.menu li span{ display:block; padding-right:15px;}
+.menu li.default{ background:url('../../pageframe/images/home/cardDefault_l.png') no-repeat left top;}
+.menu li.default span{ background:url('../../pageframe/images/home/cardDefault_r.png') right top; color:#303030;}
+.menu li.active{ background:url(../../pageframe/images/home/card_l.png) no-repeat left top;}
+.menu li.active span{ background:url(../../pageframe/images/home/card_r.png) right top; color:#212121; font-weight:bold;}
+.content{ 
+	border-left:1px solid #618cc0;
+	border-bottom:1px solid #618cc0;
+	border-right:1px solid #618cc0;  
+}

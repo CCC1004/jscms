@@ -1,0 +1,51 @@
+body{
+	margin: 5px;	
+}
+.titleTable{
+	PADDING-RIGHT: 4px;
+	BORDER-TOP: #88ACD9 1px solid;
+	PADDING-LEFT: 4px;
+	BACKGROUND: #CFDDEF;
+	PADDING-BOTTOM: 1px;
+	PADDING-TOP: 1px;
+	BORDER-BOTTOM: #88ACD9 1px solid;
+	width:100%;
+}
+.title{
+	font-size: 13px;
+    font-weight: bold;
+}
+INPUT.normal {
+	BACKGROUND-COLOR: #ffffff;
+	border-bottom:1px #F0F0F0  solid;
+	border-right:1px #F0F0F0  solid;
+	border-left:1px #999999 solid;
+	border-top:1px #999999 solid;
+	height:22px;
+
+}
+.normalformTb
+{
+  width:100%;
+	FONT-FAMILY: '\5FAE\8F6F\96C5\9ED1';
+	FONT-SIZE: 12px;	
+  background-color:#F7F7F7; 	
+  padding: 5px;
+    border-collapse:collapse;
+}
+
+.normalformTb_s
+{
+  width:100%;
+	FONT-FAMILY: ËÎÌו;
+	FONT-SIZE: 12px;	
+  background-color:#F7F7F7; 	
+  padding: 5px;
+}
+
+.normalformTb td{ border:solid 1px #cfcfcf; background:#fff; line-height:20px; padding:4px; color:#666;}
+.normalformTb th{ border:solid 1px #A7A6AA; padding:4px; font-size:14px; color:#777779; background:#EFEFEF;}
+
+.tabsContent{ border:solid 0px #ccc; text-align:left;width:100%;}
+.tabsContent h3{ font-size:24px; letter-spacing:1px; font-family:'\5FAE\8F6F\96C5\9ED1' letter-spacing:1px; color:#2E87CB; padding:20px 0; display:block; background:#FBFBFB; border:solid 1px #47A0C6; margin-bottom:4px;}
+.tabsContent2 h4{ font-size:20px; letter-spacing:1px; font-family:'\5FAE\8F6F\96C5\9ED1' letter-spacing:1px; color:#2E87CB; padding:15px 0; display:block; background:#FBFBFB; border:solid 1px #47A0C6; margin-bottom:4px;}

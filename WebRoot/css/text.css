@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+	}
+body{
+	text-align:center;
+	overflow:hidden;}
+.text_border{
+	width:99%;
+	margin:0 auto;
+	text-align:left;
+	border:1px solid #AACCF1;
+	margin-top:5px;
+	}
+h4{
+	color:#00A2F3;
+	text-align:center;
+	padding-top:25px;
+	padding-bottom:15px;
+	}
+	
+hr{
+	border:1px dashed #999;
+    width:97%;
+	}	
+
+.cont{
+	width:97%;
+	padding-left:35px;
+	}	
+.cont p{
+	text-align:left;
+	}
+.cont table{
+	font-size:14px;
+	color:#666;
+	}
+.cont  tr{height:25px;}
+
+.cont table a{color:#666;text-decoration:none;}	
+.cont table a:hover{color:#800000;text-decoration:underline;}		

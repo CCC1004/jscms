@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<description>qlight</description>
+	<tlib-version>2.0</tlib-version>
+	<short-name>qlight-tags</short-name>
+	<uri>/qlight-tags</uri>
+
+	<tag>
+		<description>
+			<![CDATA[通过code获取Waunit表中相关信息，默认读取nm
+			]]>
+		</description>
+		<name>code</name>
+		<tag-class>qlight.frames.web.tags.views.jsp.ui.CodeTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description><![CDATA[指定id]]></description>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[指定显示值]]></description>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[指定显示值]]></description>
+			<name>property</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[指定关联表]]></description>
+			<name>table</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

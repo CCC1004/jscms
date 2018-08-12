@@ -1,0 +1,196 @@
+BODY,
+			HTML {
+				padding: 0px;
+				margin: 0px;
+			}
+			BODY {
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 14px;
+				background: #FFF;
+				padding: 15px;
+			}
+			
+			H1 {
+				font-size: 20px;
+				font-weight: normal;
+			}
+			
+			H2 {
+				font-size: 16px;
+				font-weight: normal;
+			}
+			
+			FIELDSET {
+				border: solid 1px #CCC;
+				-moz-border-radius: 16px;
+				-webkit-border-radius: 16px;
+				border-radius: 16px;
+				padding: 1em 2em;
+				margin: 1em 0em;
+			}
+			
+			LEGEND {
+				color: #666;
+				font-size: 16px;
+				padding: 0em .5em;
+			}
+			
+			PRE {
+				font-family: "Courier New", monospace;
+				font-size: 11px;
+				color: #666;
+				background: #F8F8F8;
+				padding: 1em;
+				-moz-border-radius: 8px;
+				-webkit-border-radius: 8px;
+				border-radius: 8px;
+			}
+			/* Custom dialog styles */
+			#popup_container.style_1 {
+				font-family: Georgia, serif;
+				color: #A4C6E2;
+				background: #005294;
+				border-color: #113F66;
+			}
+			
+			#popup_container.style_1 #popup_title {
+				color: #FFF;
+				font-weight: normal;
+				text-align: left;
+				background: #76A5CC;
+				border: solid 1px #005294;
+				padding-left: 1em;
+			}
+			
+			#popup_container.style_1 #popup_content {
+				background: none;
+			}
+			
+			#popup_container.style_1 #popup_message {
+				padding-left: 0em;
+			}
+			
+			#popup_container.style_1 INPUT[type='button'] {
+				border: outset 2px #76A5CC;
+				color: #A4C6E2;
+				background: #3778AE;
+			}
+			.txt{
+				BORDER-RIGHT: #bdbabd 1px solid; 
+				BORDER-TOP: #bdbabd 1px solid; 
+				BORDER-LEFT: #bdbabd 1px solid; 
+				COLOR: #666666; 
+				BORDER-BOTTOM: #bdbabd 1px solid; 
+				width:96%;height:100%;border-widht:0px
+			}
+			.inputtxt{ 
+				color:#005aa7; 
+				border-bottom:1px solid #005aa7; 
+				border-top:0px; 
+				border-left:0px; 
+				border-right:0px; 
+				background-color:transparent; 
+				width:96%;height:100%;
+				} 
+			table.default {
+			    background: #C1DCF7 none repeat scroll 0%;
+			    border: 1px solid #C1DCF7;
+			    color: #000000;
+			    width: 98%;
+			    border-collapse: collapse;
+			    margin: 0 auto;
+			}
+			 
+			table.default caption {
+			   
+			    height: 30px !important;
+			    line-height: 30px;
+			    text-align: left;
+			    padding-left: 10px;
+			    font-size: 14px;
+			    font-weight: bold;
+			    color: #FFFFFF;
+			}
+			 
+			table.default caption a:link, table.default caption a:visited {
+			    color: #000000;
+			    font-size: 14px;
+			    text-decoration: underline;
+			}
+			 
+			table.default caption a:hover {
+			    font-size: 14px;
+			    color: #14568A;
+			}
+			 
+			table.default thead tr {
+			    background: #C1DCF7 none repeat scroll 0%;
+			    color: #000000;
+			    height: 25px;
+			    line-height: 25px;
+			    text-align: center;
+			    font-size: 13px;   
+			}
+			 
+			table.default thead tr th {
+			    border-color: #FFFFFF;        /* fix for IE */
+			}
+			 
+			table.default tbody {
+			    background: #FFFFFF none repeat scroll 0%;
+			    text-align: left;
+			}
+			 
+			table.default tbody tr {
+			    height: 25px;
+			    line-height: 25px;
+			   
+			}
+			 
+			table.default tbody tr:hover, table.default tbody tr.over {
+			    background-color: #E8F0FF;
+			}
+			 
+			table.default tbody tr td {
+			    font-size: 14px;
+			    padding: 0 0 0 5px;
+			    border-color: #C1DCF7;        /* fix for IE */
+			}
+			 
+
+			 
+			table.default tbody tr td[align="center"] {
+			    padding: 0;
+			}
+			 
+			table.default tbody tr td[align="right"] {
+			    padding: 0 5px 0 0;
+			}
+a.button { 
+    background: transparent url('../images/bg_button_a.gif') no-repeat scroll top right; 
+    color: #444; 
+    display: block; 
+    float: left; 
+    font: normal 14px arial, sans-serif; 
+    height: 24px; 
+    margin-right: 6px; 
+    padding-right: 18px; /* sliding doors padding */ 
+    text-decoration: none; 
+} 
+ 
+a.button span { 
+    background: transparent url('../images/bg_button_div.gif') no-repeat; 
+    display: block; 
+    line-height: 14px; 
+    padding: 5px 0 5px 18px; 
+} 
+a.button:active { 
+    background-position: bottom right; 
+    color: #000; 
+    outline: none; /* hide dotted outline in Firefox */ 
+} 
+ 
+a.button:active span { 
+    background-position: bottom left; 
+    padding: 6px 0 4px 18px; /* push text down 1px */ 
+} 

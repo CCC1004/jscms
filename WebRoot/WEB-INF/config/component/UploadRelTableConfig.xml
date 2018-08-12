@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uploadRelTables xmlns="http://www.ewatersoft.com/QLight"> 		
+
+	<!-- -->
+
+	<uploadTable taben="info_report" tabnm="信息报备表" relTaben="wr_md_inf_t_relate" relTabnm="附件关系表">		
+		<tableField id="id" name="">
+			<relTableField id="info_id" name=""/>
+		</tableField>
+		<uploadField id="FILE_CD" name="附件编码"></uploadField>
+		<uploadTimeField id="TS" name="时间" value="generator.datetime"></uploadTimeField>
+	</uploadTable>
+	<uploadTable taben="info_options_pz_content" tabnm="信息选项配置内容表" relTaben="wr_md_inf_t_relate_pzcontent" relTabnm="配置内容附件关系表">		
+		<tableField id="id" name="">
+			<relTableField id="pzcontent_id" name=""/>
+		</tableField>
+		<uploadField id="FILE_CD" name="附件编码"></uploadField>
+		<uploadTimeField id="TS" name="时间" value="generator.datetime"></uploadTimeField>
+	</uploadTable>
+	<uploadTable taben="advice_feedback" tabnm="意见反馈" relTaben="wr_md_inf_t_relate_advice" relTabnm="意见反馈附件关系表">		
+		<tableField id="id" name="">
+			<relTableField id="advice_id" name=""/>
+		</tableField>
+		<uploadField id="FILE_CD" name="附件编码"></uploadField>
+		<uploadTimeField id="TS" name="时间" value="generator.datetime"></uploadTimeField>
+	</uploadTable>
+	<uploadTable taben="gzdt_send" tabnm="发送文件表" relTaben="wr_md_inf_t_relate_send" relTabnm="发送文件附件关系表">		
+		<tableField id="send_id" name="">
+			<relTableField id="send_id" name=""/>
+		</tableField>
+		<uploadField id="FILE_CD" name="附件编码"></uploadField>
+		<uploadTimeField id="TS" name="时间" value="generator.datetime"></uploadTimeField>
+	</uploadTable>
+</uploadRelTables>
+

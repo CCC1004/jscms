@@ -1,0 +1,51 @@
+P {
+	FONT-WEIGHT: normal
+}
+TABLE {
+	FONT-WEIGHT: normal
+}
+TD {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; BACKGROUND-COLOR: #fff
+}
+TH {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; BACKGROUND-COLOR: #ccc; TEXT-ALIGN: center
+}
+#content {
+	PADDING-RIGHT: 40px; PADDING-LEFT: 50px
+}
+#content H2 {
+	FONT-SIZE: 18px; MARGIN-BOTTOM: 8px; COLOR: #1e9300; PADDING-TOP: 30px
+}
+#content H2 A {
+	COLOR: #1e9300
+}
+#content H3 {
+	MARGIN-TOP: 24px; MARGIN-BOTTOM: 8px; FONT: bold 14px 宋体,tahoma,arial,sans-serif; COLOR: #0033cc
+}
+#content H3 A {
+	COLOR: #0033cc
+}
+#content UL {
+	MARGIN-LEFT: 20px
+}
+#content OL {
+	MARGIN: 16px 0px 8px 36px; FONT: bold 9pt 宋体,tahoma,arial,sans-serif
+}
+#content OL LI {
+	MARGIN-TOP: 16px
+}
+#content DIV {
+	BORDER-RIGHT: #333 1px solid; BORDER-TOP: #333 1px solid; MARGIN-TOP: 20px; MARGIN-BOTTOM: 10px; BORDER-LEFT: #333 1px solid; BORDER-BOTTOM: #333 1px solid
+}
+#content DIV H4 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 9pt; BACKGROUND: #eee; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+#content DIV P {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.STYLE1 {
+	COLOR: #ff0000
+}
+.STYLE2 {
+	COLOR: #0000ff
+}

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+
+	<security:authentication-manager alias="authenticationManager" />
+
+
+	<security:http auto-config="false"	
+		access-denied-page="/basepage/security/au_error.jsp"
+		lowercase-comparisons="true" path-type="ant"  entry-point-ref="casProcessingFilterEntryPoint">
+
+		<security:intercept-url pattern="/basepage/security/login.jsp" filters="none" />
+		<security:intercept-url pattern="/basepage/security/expired.jsp" filters="none" />
+		<security:intercept-url pattern="/basepage/security/au_error.jsp" filters="none" />
+		
+		<security:intercept-url pattern="/Components/**" filters="none" />
+		<security:intercept-url pattern="/images/**" filters="none" />
+		<security:intercept-url pattern="/javascript/**" filters="none" />
+		
+		<security:intercept-url pattern="/pageframe/**" filters="none" />
+		
+		<security:intercept-url pattern="/basepage/images/**" filters="none" />
+		<security:intercept-url pattern="/images/**" filters="none" />
+		<security:intercept-url pattern="/basepage/css/**" filters="none" />
+		<security:intercept-url pattern="/basepage/javascript/**" filters="none" />
+		<security:intercept-url pattern="/basepage/**/*.html" filters="none" />
+		<security:intercept-url pattern="/basepage/**/*.js" filters="none" />
+		
+		<security:intercept-url pattern="/lib/**/**" filters="none" />
+		<security:intercept-url pattern="/basepage/ModalDialog.jsp*" filters="none" />
+
+		<security:concurrent-session-control max-sessions="10000"
+			exception-if-maximum-exceeded="false"
+			expired-url="/basepage/security/expired.jsp" />
+		<security:form-login login-page="/basepage/security/login.jsp"
+			authentication-failure-url="/basepage/security/login.jsp"
+			default-target-url="/index.qact" />
+	</security:http>
+	
+     
+    
+	<!-- 用户登出自定义过滤器 -->
+	<bean id="logoutFilter"
+		class="org.springframework.security.ui.logout.LogoutFilter">
+		<security:custom-filter position="LOGOUT_FILTER" />
+		<constructor-arg>
+			<list>
+				<bean class="org.springframework.security.ui.logout.SecurityContextLogoutHandler" />
+				<bean class="qlight.frames.security.listener.LogoutHandlerImpl" />
+			</list>
+		</constructor-arg>
+		<constructor-arg value="/index.qact" /> <!--注销后跳转的URL   <constructor-arg value="/index.qact" /> -->		
+		<property name="filterProcessesUrl" value="/j_spring_security_logout" />
+	</bean>    
+	
+
+	<!-- 匿名用户相关配置 -->
+	<bean id="anonymousProcessingFilter"
+		class="org.springframework.security.providers.anonymous.AnonymousProcessingFilter">
+		<security:custom-filter position="ANONYMOUS_FILTER" />
+		<property name="key" value="foobar" />
+		<!-- 匿名用户的用户名和角色ID-->
+		<property name="userAttribute" value="anonymousUser,ROLE_ANONYMOUS__________________"/>
+	</bean>
+
+	<bean id="anonymousAuthenticationProvider"
+		class="org.springframework.security.providers.anonymous.AnonymousAuthenticationProvider">
+		<property name="key" value="foobar" />
+	</bean>
+	
+<!-- CAS单点登录配置 -->
+<!-- 	<bean id="casProcessingFilter" class="org.springframework.security.ui.cas.CasProcessingFilter">
+	    <security:custom-filter after="CAS_PROCESSING_FILTER"/>
+	    <property name="authenticationManager" ref="authenticationManager"/>
+	    <property name="authenticationFailureUrl" value="/casfailed.jsp" /> CAS认证失败转向的页面
+	    <property name="defaultTargetUrl" value="/index.qact" />  CAS登录成功转向的页面
+	</bean>
+	
+	<bean id="casProcessingFilterEntryPoint"
+	            class="org.springframework.security.ui.cas.CasProcessingFilterEntryPoint">
+	    <property name="loginUrl" value="${ql.security.cas.server.loginUrl}" />  CAS服务器的登录页面，访问当前系统时未登录则自动跳转
+	    <property name="serviceProperties" ref="casServiceProperties" />
+	</bean>
+	
+	<bean id="casServiceProperties" class="org.springframework.security.ui.cas.ServiceProperties">
+		CAS认证完成后重定向到当前系统的地址，即当前系统的CAS自动登录地址
+	    <property name="service" value="${ql.security.cas.client.checkUrl}"/>
+	    <property name="sendRenew" value="false"/>
+	</bean>
+	
+	<bean id="casAuthenticationProvider" class="org.springframework.security.providers.cas.CasAuthenticationProvider">
+	    <security:custom-authentication-provider />
+	    <property name="userDetailsService" ref="userDetailsService" />
+	    <property name="serviceProperties" ref="casServiceProperties" />
+	    <property name="ticketValidator">
+	        <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
+	            <constructor-arg index="0" value="${ql.security.cas.server.url}" />
+	        </bean>
+	    </property>
+	    <property name="key" value="qlight_cas_key" />
+	</bean>
+	
+	<bean id="casSingleSignOutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter">
+	 <security:custom-filter before ="CAS_PROCESSING_FILTER"/>
+	</bean>	 -->
+    <!-- CAS配置结束 --> 	
+	
+
+	<bean id="roleVoter"
+		class="org.springframework.security.vote.RoleVoter">
+		<property name="rolePrefix" value="" />
+		<!-- 投票者支持的权限前缀，默认是“ROLE_” -->
+	</bean>
+
+	<bean id="authenticatedVoter"
+		class="org.springframework.security.vote.AuthenticatedVoter" />
+
+	<bean id="accessDecisionManager"
+		class="org.springframework.security.vote.AffirmativeBased">
+		<property name="allowIfAllAbstainDecisions" value="false" />
+		<property name="decisionVoters">
+			<list>
+				<ref bean="roleVoter" />
+				<ref bean="authenticatedVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="databaseFilterInvocationDefinitionSource"
+		class="qlight.frames.security.MySecureResourceFilter"
+		init-method="init">
+
+		<property name="auAuthDao" ref="auAuthDao"></property>
+		<property name="urlMatcher" ref="antUrlPathMatcher"></property>
+	</bean>
+	<bean id="filterInvocationInterceptor"
+		class="org.springframework.security.intercept.web.FilterSecurityInterceptor">
+		<security:custom-filter before="FILTER_SECURITY_INTERCEPTOR" />
+		<property name="authenticationManager"
+			ref="authenticationManager" />
+		<property name="accessDecisionManager"
+			ref="accessDecisionManager" />
+		<property name="objectDefinitionSource"
+			ref="databaseFilterInvocationDefinitionSource" />
+	</bean>
+
+	<!-- 用户登录监听器 -->
+	<bean class="qlight.frames.security.listener.LoginSuccessListener" />
+
+
+	<bean id="antUrlPathMatcher" class="org.springframework.security.util.AntUrlPathMatcher" />
+
+	<bean id="loggerListener" class="org.springframework.security.event.authentication.LoggerListener" />
+
+	<!-- 基于CA的认证方式 
+	<bean id="certUtil" class="com.gfapki.util.CertUtil"></bean>	
+		<bean id="x509ProcessingFilter" class="qlight.frames.security.GFAX509ProcessingFilter">
+		<security:custom-filter position="X509_FILTER"/>
+		<property name="authenticationManager" ref="x509AuthenticationProvider" />  
+		</bean>  
+		
+		<bean id="x509UserCache" class="org.springframework.security.providers.x509.cache.EhCacheBasedX509UserCache">
+		<property name="cache" ref="userCacheBackend"></property>
+		</bean>
+		
+		<bean id="x509AuthoritiesPopulator" class="qlight.frames.security.service.impl.GFAX509AuthoritiesPopulator">
+		<property name="certUtil" ref="certUtil"></property>
+		<property name="userDetailsService" ref="userDetailsService">
+		</property>
+		</bean>
+		<bean id="x509AuthenticationProvider" class="org.springframework.security.providers.x509.X509AuthenticationProvider">
+		<security:custom-authentication-provider/>
+		<property name="x509AuthoritiesPopulator" ref="x509AuthoritiesPopulator"></property>
+		<property name="x509UserCache" ref="x509UserCache"></property>
+		</bean> 
+	-->
+	
+	<!-- 基于数据库的用户名密码的认证方式 -->
+	<bean id="daoAuthenticationProvider"
+		class="org.springframework.security.providers.dao.DaoAuthenticationProvider">
+		<security:custom-authentication-provider/>
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder" ref="md5PasswordEncoder" />
+		<property name="userCache" ref="userCache"></property>		
+	</bean>
+	
+	<bean id="md5PasswordEncoder"
+		class="org.springframework.security.providers.encoding.Md5PasswordEncoder" />
+	
+	<!-- 用户信息缓存 -->
+	<bean id="userCache"
+		class="org.springframework.security.providers.dao.cache.EhCacheBasedUserCache">
+		<property name="cache" ref="userCacheBackend"></property>
+	</bean>
+	
+    <!-- 国际化信息 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">       <!-- 看这里 :) -->
+       <property name="basename" value="classpath:MsgResource_zh_CN"/>
+    </bean>  	
+</beans>

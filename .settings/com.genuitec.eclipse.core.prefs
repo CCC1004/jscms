@@ -1,0 +1,4 @@
+#Mon Mar 16 16:59:13 CST 2009
+eclipse.preferences.version=1
+validator.Checked=src/test/qlight/table/xml/User.xml,src/qlight/frames/config/ibatis/SqlMapCommon.xml
+validator.Unchecked=

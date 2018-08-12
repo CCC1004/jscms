@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.qingliu.com/QLight/1.5" 
+xmlns:tns="http://www.qingliu.com/QLight/1.5" 
+elementFormDefault="qualified">
+	
+	<element name="tableApp" type="tns:tableApp"></element>
+	<element name="listApp" type="tns:listApp" ></element>
+
+	<complexType name="tableApp">
+
+        <sequence>
+        	<element ref="tns:listApp" maxOccurs="unbounded"
+        		minOccurs="0">
+        	</element>
+        	<element ref="tns:insertApp" maxOccurs="unbounded"
+        		minOccurs="0">
+        	</element>
+        	<element ref="tns:updateApp" maxOccurs="unbounded"
+        		minOccurs="0">
+        	</element>
+        	<element ref="tns:infoApp" maxOccurs="unbounded"
+        		minOccurs="0">
+        	</element>
+        	<element ref="tns:chartApp" maxOccurs="unbounded"
+        		minOccurs="0">
+        	</element>
+        	<element ref="tns:dynamicChartApp" maxOccurs="unbounded" minOccurs="0"></element>
+        </sequence>
+        <attribute name="table" type="string" use="required"></attribute>
+
+		<attribute name="pk" type="string" use="required"></attribute>
+	</complexType>
+
+	<complexType name="listApp">
+
+		<annotation>
+			<documentation>列表页面配置</documentation>
+		</annotation>
+		<sequence>
+			<element name="javaScript" type="tns:javaScriptType"
+				maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>导入js文件到当前页面里</documentation>
+				</annotation>
+			</element>
+			<element name="queryCondition"
+				type="tns:queryCondition_type" maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[
+		        		固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+		        		]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="queryScript" type="tns:queryScript_type"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[
+		        			基于beanShell脚本固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+		        		]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="treeId" type="tns:treeIdType"
+				maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>树形列表时，树父子关联字段配置。</documentation>
+				</annotation>
+			</element>
+			<element name="advancedSelect" type="tns:advancedSelect"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>查询配置</documentation>
+				</annotation>
+			</element>
+
+			<element name="field" type="tns:field" maxOccurs="1"
+				minOccurs="1">
+				<annotation>
+					<documentation>字段列表配置</documentation>
+				</annotation>
+			</element>
+
+			<element name="foots" type="tns:foots_type" maxOccurs="1"
+				minOccurs="0">
+				<annotation>
+					<documentation>列表脚统计行组</documentation>
+				</annotation>
+			</element>
+			<element name="actionButton" type="tns:actionButton"
+				maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>按钮</documentation>
+				</annotation>
+			</element>
+
+			<element name="tabFrame" type="tns:tabFrame_type"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>配置子tab页，如用于主从表页面</documentation>
+				</annotation>
+			</element>
+
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="page" type="boolean" use="required">
+			<annotation>
+				<documentation>列表是否进行分页显示</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="pageSize" type="int" use="required">
+			<annotation>
+				<documentation>分页时，每页显示记录数</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="title" type="string" use="required">
+			<annotation>
+				<documentation>列表标题</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="treeList" type="boolean" use="required">
+			<annotation>
+				<documentation>
+					是否树形列表。 为true时，必需设置treeId字节点。
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="isDynamicTree" type="boolean">
+			<annotation>
+				<documentation>是否是动态加载的树 默认为true</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="orderBy" type="string" use="optional">
+			<annotation>
+				<documentation>
+					指定默认排序字段，可支持同时指定多个排序字段，写法同SQL标准格式，如：addvcd
+					desc,wrrcd asc
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="saveState" type="boolean" use="optional">
+			<annotation>
+				<documentation>
+					是否通过Cookies保存表格的状态，包括列宽，列隐藏和列顺序,默认true
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="advancedSelect">
+
+		<sequence>
+			<element name="option" type="tns:option"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+		</sequence>
+
+
+		<attribute name="advBtnHidden" type="boolean" use="optional">
+			<annotation>
+				<documentation>是否隐藏高级查询按钮，默认为不隐藏</documentation>
+			</annotation>
+		</attribute>
+		
+		<attribute name="include" type="string" use="optional">
+			<annotation>
+				<documentation>自定义嵌入的页面，如果采用自定义页面，xml定义的元素自动隐藏，xml中必须要保留元素，用于后台解析用。</documentation>
+			</annotation>
+		</attribute>
+		
+		<attribute name="hidden" type="boolean" use="optional" default="false">
+			<annotation>
+				<documentation>是否隐藏快速查询页面。默认不隐藏</documentation>
+			</annotation>
+		</attribute>
+		
+		
+	</complexType>
+
+	<complexType name="field">
+		<sequence>
+			<element name="property" type="tns:property"
+				maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>列表的表头（字段）配置</documentation>
+				</annotation>
+			</element>
+			<element name="fieldGroup" type="tns:fieldGroup_type"
+				maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>表头分组配置</documentation>
+				</annotation>
+			</element>
+		</sequence>
+
+
+		<attribute name="autoExpandColumn" type="boolean" use="optional">
+			<annotation>
+				<documentation>
+					是否自动展开列宽填满整个表格的宽度,默认为false
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="actionButton">
+
+		<sequence>
+			<element name="param" type="tns:paramType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="action" type="string" use="required"></attribute>
+		<attribute name="type" use="required">
+			<annotation>
+				<documentation>
+					<![CDATA[
+						add:  增加记录<br>
+						update: 修改记录<br>
+						delete:  删除选中的记录<br>
+						delAll:  删除所有当前列表里的数据，如果有分页的列表同样包含删除当前页之外的其它页的数据.action为空时默认生成删除当前列表的action地址，如：QLDeleteAll_table.List
+						(注：当前列表的数据不是指当前表的所有数据，而是指当前列表经过查询条件过滤后的结果数据)<br>
+						export:  导出按钮，将grid的数据导出到Excel中下载.action为空时默认生成导出当前列表的action地址，如：QLExpExcel_table.List
+						<br>
+						import:  导入按钮，上传一个Excel文件，导入到grid和数据库中.action为空时默认生成导入到当前列表的action地址，如：QLImpExcel_table.List
+						<br>
+						upload:  上传按钮，参数只需要一个文件组ID<br>
+						download:下载按钮，参数只需要一个文件组ID
+					]]>
+				</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="add" />
+					<enumeration value="update" />
+					<enumeration value="delete" />
+					<enumeration value="delAll" >
+						<annotation>
+							<documentation>
+								<![CDATA[
+									删除所有当前列表里的数据，如果有分页的列表同样包含删除当前页之外的其它页的数据
+									(注：当前列表的数据不是指当前表的所有数据，而是指当前列表经过查询条件过滤后的结果数据)
+									]]>
+							</documentation>
+						</annotation>							
+					</enumeration>
+					<enumeration value="action" />
+					<enumeration value="url"></enumeration>
+					<enumeration value="javaScript"></enumeration>
+					<enumeration value="export">
+						<annotation>
+							<documentation>
+								<![CDATA[
+									导出按钮，将grid的数据导出到Excel中下载
+									]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="import">
+						<annotation>
+							<documentation>
+								<![CDATA[
+									导入按钮，上传一个Excel文件，导入到grid和数据库中
+									]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="upload">
+						<annotation>
+							<documentation>
+								<![CDATA[
+									上传按钮，参数只需要一个文件组ID
+									]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="download">
+						<annotation>
+							<documentation>
+								<![CDATA[
+									下载按钮，参数只需要一个文件组ID
+									]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+		<attribute name="needSelect" type="string" use="optional">
+			<annotation>
+				<documentation>
+					<![CDATA[
+				该属性用于，触发按钮时是否要求表格里有选中的记录。
+				属性的内容请填写一个判断表达式，例如：<br>
+				==1 <br>
+				>=1 <br>
+				!=5	<br>
+				]]>
+				</documentation>
+			</annotation>
+
+		</attribute>
+		<attribute name="authKey" type="string" use="optional">
+			<annotation>
+				<documentation>关联的权限标识</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="formActionButton">
+		<sequence>
+			<element name="param" type="tns:paramType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="action" type="string" use="optional"></attribute>
+		<attribute name="type" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="save" />
+					<enumeration value="cancel" />
+					<enumeration value="action" />
+					<enumeration value="url"></enumeration>
+					<enumeration value="javaScript"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+		<attribute name="authKey" type="string" use="optional">
+			<annotation>
+				<documentation>关联的权限标识</documentation>
+			</annotation></attribute>
+	</complexType>
+
+
+
+	<complexType name="option">
+		<sequence>
+			<element name="key" type="tns:key" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="id" type="string" use="required">
+			<annotation>
+				<documentation>
+					查询时参数的名称，不允许有重复。如果需要对某个字段设置两个以上查询条件，则需要分别配置多个Option并且自定义id属性，然后通过设置fieldName属性来标识真实的字段名。
+				</documentation>
+			</annotation></attribute>
+		<attribute name="type" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="input" />
+					<enumeration value="select" />
+					<enumeration value="select-null" />
+					<enumeration value="password" />
+					<enumeration value="radioBox" />
+					<enumeration value="textarea" />
+					<enumeration value="checkBox" />
+					<enumeration value="date" />
+					<enumeration value="datetime" />
+					<enumeration value="date-year" />					
+					<enumeration value="hidden" />
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+		<attribute name="quickQuery" type="boolean" use="required"></attribute>
+		<attribute name="defaultval" type="string">
+			<annotation>
+				<documentation>
+					<![CDATA[
+					    该属性用于设置默认值，可直接设置常量值或者也可分别可从Application，Session，Request,Service,User里取值。<br>
+					    <br>常量默认值时，直接写值的内容即可；如果从Application、Request等里取值时，需要以#号打头后面加上值来源及参数名称，格式为：#[值来源].[参数名]，示例写法如：<br>
+					    #request.name,#user.id,#table.fname。<br>
+					       各取值来源的说明如下：
+						<dl>
+						<dt>Application,Session,Request类型:</dt>
+						<dd>用于从Application,Session,Request的上下文里取值</dd>
+						<dt>service类型：</dt>
+						<dd>用于通过指定的Bean获取值，将参数设置为SpringBean的id，定义的bean必须实现ValueService接口。</dd>
+										    
+					    <dt>user类型:</dt>
+						<dd>用于获取当前用户的相关信息，通过指定不同的参数获取指定的用户或权限信息,以下是各参数所取信息的说明：<br>
+						&nbsp;&nbsp;id-当前用户ID<br>
+						&nbsp;&nbsp;name-当前用户的用户名<br>
+						&nbsp;&nbsp;org-当前用户登陆时所使用的组织ID<br>
+						&nbsp;&nbsp;orgs-当前用户所拥有的组织ID的集合(多个ID之间以逗号分隔)
+						</dd>								 						
+						</dl>
+					]]>			
+				</documentation>
+			</annotation>
+
+		</attribute>
+		<attribute name="isField" type="boolean">
+			<annotation>
+				<documentation>
+					标识当前查询是否是针对当前表的字段查询， 如果是则ID必需对应表里的 某个字段。 默认为True
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="sequence" type="int" use="optional">
+			<annotation>
+				<documentation>标识查询条件字段的现实顺序</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="condition" use="optional">
+			<annotation>
+				<documentation>
+					<![CDATA[
+            	本属于用于查询比较运算符设置，可设置为等于(equal),大于(greater)，小于(lesser)，大于等于(greate_equal)
+            	，小于等于(lesser_equal)，不等于(not_equal)，包含(like)，左侧包含(like-left)，右侧包含(like-right)。
+            	<br>不设置时默认为等于。
+            	]]>
+				</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="equal">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								等于
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="greater">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								大于
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="lesser">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								小于
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="greate_equal">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								大于等于
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="lesser_equal">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								小于等于
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+
+					<enumeration value="not_equal">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								不等于
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="like">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								包含
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="like-left">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								左侧包含
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="like-right">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								右侧包含
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="fieldName" type="string" use="optional">
+			<annotation>
+				<documentation>
+					查询的字段名，如果不设置该属性，则查询时自动用id属性作为字段名进行查询。
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="key">
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="value" type="string" use="required"></attribute>
+		<attribute name="lookupDataSource" type="string" use="required">
+		<annotation>
+			<documentation>
+				<![CDATA[
+				1.以  local:    开头表示从数据字典中获取<br>
+				2.以  serviceId: 开头表示：<br>
+					特定数据来源，指定spring中bean的id等于serviceId<br>
+					指定的java类必须实现KeyListService接口<br>
+				3.其它则认为是指定的表名，自动从指定表里取数据
+				]]>
+			</documentation>
+		</annotation>
+		</attribute>
+	</complexType>
+
+	<complexType name="property">
+		<sequence>
+			<element name="link" type="tns:linkType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="key" type="tns:key" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="sequence" type="int" use="optional"></attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+		<attribute name="type" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="data" />
+					<enumeration value="checkBox" />
+					<enumeration value="link" />
+					<enumeration value="radioBox"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="sort" type="boolean" use="required"></attribute>
+		<attribute name="width" type="int"></attribute>
+		<attribute name="authKey" type="string" use="optional">
+			<annotation>
+				<documentation>关联的权限标识</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="showFoot" type="boolean"></attribute>
+		<attribute name="renderer" type="string" use="optional">
+			<annotation>
+				<documentation>自定义ExtGrid列的renderer</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="align" use="optional">
+			<annotation>
+				<documentation>单无格数据对齐方式，默认为左对齐(left)</documentation>
+			</annotation>		
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="left" />
+					<enumeration value="center" />
+					<enumeration value="right" ></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+
+
+	<complexType name="linkType">
+		<sequence>
+			<element name="param" type="tns:paramType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+		<attribute name="action" type="string"></attribute>
+		<attribute name="type">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="add" />
+					<enumeration value="update" />
+					<enumeration value="action" />
+					<enumeration value="delete"></enumeration>
+					<enumeration value="url"></enumeration>
+					<enumeration value="javaScript"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<complexType name="paramType">
+		<sequence>
+			<element name="key" type="tns:key" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="id" type="string" use="required">
+			<annotation>
+				<documentation>
+				参数的名称
+				</documentation>
+			</annotation>		
+		</attribute>
+		<attribute name="value" type="string" use="required"></attribute>
+		<attribute name="scope" use="required">
+			<annotation>
+				<documentation>
+					<![CDATA[
+					    scope属性的类型包括Application,Session,Request,Service,User,Table。<br>
+						<dl>
+						<dt>Application,Session,Request类型:</dt>
+						<dd>可分别从Application,Session,Request的上下文里取值，通过value属性指定上下文里参数的名称</dd>
+						<dt>service类型：</dt>
+						<dd>用于通过指定的Bean获取值，将value属性设置为SpringBean的id，定义的bean必须实现ValueService接口。</dd>
+										    
+					    <dt>user类型:</dt>
+						<dd>用于获取当前用户的相关信息，通过指定不同的value值获取指定的用户或权限信息,以下是各value值所取信息的说明：<br>
+						&nbsp;&nbsp;id-当前用户ID<br>
+						&nbsp;&nbsp;name-当前用户的用户名<br>
+						&nbsp;&nbsp;org-当前用户登陆时所使用的组织ID<br>
+						&nbsp;&nbsp;orgs-当前用户所拥有的组织ID的集合(多个ID之间以逗号分隔)
+						</dd>
+						<dt>table类型：</dt>
+						<dd>用于从当前表里取值，value为要取值的字段名。注意：table类型只在ListApp的Property内配置Link的参数时有效.
+						</dd>										 						
+						</dl>
+					]]>
+				</documentation>
+			</annotation>
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="request" />
+					<enumeration value="session" />					
+					<enumeration value="application" />
+					<enumeration value="user">
+					</enumeration>
+					<enumeration value="service">
+					</enumeration>
+					<enumeration value="table" />
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<element name="insertApp" type="tns:insertAppType"></element>
+
+	<complexType name="insertAppType">
+		<sequence>
+			<element name="javaScript" type="tns:javaScriptType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="option" type="tns:fulloptionType"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+			<element name="actionButton" type="tns:formActionButton"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="title" type="string" use="required"></attribute>
+		<attribute name="isUpload" type="boolean"></attribute>
+		<attribute name="onload" type="string" use="optional">
+			<annotation>
+				<documentation>
+					页面上的body.onload事件，可以在这里写javascript
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+
+	<complexType name="fulloptionType">
+		<sequence>
+			<element name="key" type="tns:key" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="validate" type="tns:validate"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="treeId" type="tns:treeIdType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="type" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="input" />
+					<enumeration value="richEditor" />
+					<enumeration value="select" />
+					<enumeration value="select-null" />
+					<enumeration value="password" />
+					<enumeration value="radioBox" />
+					<enumeration value="textarea" />
+					<enumeration value="checkBox" />
+					<enumeration value="hidden" />
+					<enumeration value="date" />
+					<enumeration value="datetime" />
+					<enumeration value="date-year" />					
+					<enumeration value="treeSelect" />
+					<enumeration value="file">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								上传文件，自动将文件路径赋值
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="image">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								按照路径显示图片
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="download">
+						<annotation>
+							<documentation>
+								<![CDATA[
+								下载指定路径的文件
+							]]>
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+		<attribute name="sequence" type="int"></attribute>
+
+
+		<attribute name="readonly" type="boolean"></attribute>
+		<attribute name="defaultval" type="string" use="optional">
+			<annotation>
+				<documentation>
+					<![CDATA[
+					    该属性用于设置默认值，可直接设置常量值或者也可分别可从Application，Session，Request,Service,User,Table,Generator里取值。<br>
+					    <br>常量默认值时，直接写值的内容即可；如果从Application、Request等里取值时，需要以#号打头后面加上值来源及参数名称，格式为：#[值来源].[参数名]，示例写法如：<br>
+					    #request.name,#user.id,#table.fname。<br>
+					       各取值来源的说明如下：
+						<dl>
+						<dt>Application,Session,Request类型:</dt>
+						<dd>用于从Application,Session,Request的上下文里取值</dd>
+						<dt>service类型：</dt>
+						<dd>用于通过指定的Bean获取值，将参数设置为SpringBean的id，定义的bean必须实现ValueService接口。</dd>
+										    
+					    <dt>user类型:</dt>
+						<dd>用于获取当前用户的相关信息，通过指定不同的参数获取指定的用户或权限信息,以下是各参数所取信息的说明：<br>
+						&nbsp;&nbsp;id-当前用户ID<br>
+						&nbsp;&nbsp;name-当前用户的用户名<br>
+						&nbsp;&nbsp;org-当前用户登陆时所使用的组织ID<br>
+						&nbsp;&nbsp;orgs-当前用户所拥有的组织ID的集合(多个ID之间以逗号分隔)
+						</dd>
+						<dt>table类型：</dt>
+						<dd>用于从当前表里取值，参数为要取值的字段名。注意：该table类型只在InsertApp或UpdateApp的Option内配置默认值时有效。</dd>		
+						<dt>generator类型：</dt>
+						<dd>用于自动产生值，目前支持的有#Generator.UUID，用于自动生成32位的随机16进制字符串 .</dd>																 						
+						</dl>
+					]]>
+
+				</documentation>
+			</annotation>
+
+		</attribute>
+
+		<attribute name="width" type="int" use="optional"></attribute>
+		<attribute name="authKey" type="string" use="optional">
+			<annotation>
+				<documentation>关联的权限标识</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="onChange" type="string" use="optional">
+			<annotation>
+				<documentation>
+					组件的onChange事件，可以在该属性里写javascript
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<element name="updateApp" type="tns:updateAppType"></element>
+
+	<complexType name="updateAppType">
+		<sequence>
+			<element name="javaScript" type="tns:javaScriptType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="queryCondition"
+				type="tns:queryCondition_type" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="queryScript" type="tns:queryScript_type"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[
+		        			基于beanShell脚本固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+		        		]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="option" type="tns:fulloptionType"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+			<element name="actionButton" type="tns:formActionButton"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="title" type="string" use="required"></attribute>
+		<attribute name="isUpload" type="boolean" use="optional"></attribute>
+		<attribute name="onload" type="string" use="optional">
+			<annotation>
+				<documentation>
+					页面上的body.onload事件，可以在这里写javascript
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<element name="infoApp" type="tns:infoAppType"></element>
+
+	<complexType name="infoAppType">
+		<sequence>
+            <element name="javaScript" type="tns:javaScriptType" maxOccurs="unbounded" minOccurs="0"></element>
+            <element name="property" type="tns:property"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+			<element name="actionButton" type="tns:actionButton"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="title" type="string"></attribute>
+	</complexType>
+
+	<complexType name="treeIdType">
+		<attribute name="treeNodeId" type="string" use="required">
+			<annotation>
+				<documentation>树的主键字段名，父级标识字段和该字段关联</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="treeNodePid" type="string" use="required">
+			<annotation>
+				<documentation>指定树里用于保存父结点的字段</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="treeRootIdVal" type="string" use="optional">
+			<annotation>
+				<documentation>指定树的根结点的ID，如果不指定则默认用父结点字段值为空的记录做为树根。</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="validate">
+		<attribute name="type" use="required">
+            <annotation>
+            	<documentation></documentation>
+            </annotation>
+            <simpleType>        
+				<restriction base="string">
+					<enumeration value="ip" />
+					<enumeration value="digit" />
+					<enumeration value="letter" />
+					<enumeration value="letter-number" />
+					<enumeration value="email" />
+					<enumeration value="url" />
+					<enumeration value="selection" />
+					<enumeration value="one-required" />					
+					<enumeration value="chinese" />
+					<enumeration value="phone" />
+					<enumeration value="mobile-phone" />
+					<enumeration value="id-number" />
+					<enumeration value="zip" />
+					<enumeration value="qq" />
+					<enumeration value="required" />
+					<enumeration value="unique" />					
+					<enumeration value="int" />
+					<enumeration value="double" />
+					<enumeration value="field-max" />
+					<enumeration value="field-min" />					
+					<enumeration value="length" />
+					<enumeration value="field-equals" />
+					<enumeration value="date" />
+					<enumeration value="file" />
+					<enumeration value="pattern" />
+					<enumeration value="ajax" />				
+				</restriction>
+			</simpleType>
+		</attribute>
+
+		<attribute name="max" type="int">
+			<annotation>
+				<documentation><![CDATA[
+					当Type为length、double、int时，该属性才有效。
+					<br>
+						Type为length时，该属性表示允许的最大长度；
+						<br>
+						Type为doulbe或int时，该属性表达允许的最大值。
+				]]>
+				</documentation>
+			</annotation></attribute>
+		<attribute name="min" type="int">
+			<annotation>
+				<documentation><![CDATA[
+					当Type为length、double、int时，该属性才有效。
+					<br>
+						Type为length时，该属性表示允许的最小长度；
+						<br>
+						Type为doulbe或int时，该属性表达允许的最小值。
+				]]>
+				</documentation>
+			</annotation></attribute>
+		<attribute name="expression" type="string">
+			<annotation>
+				<documentation><![CDATA[
+					当Type为date、file、pattern时，该属性才有效。
+					<br>
+						Type为date时，该属性可用于指定日期的输入格式，默认为yyyy-MM-dd；
+						<br>
+						Type为file时，该属性可用于指定允许的文件扩展名；
+						<br>
+						Type为pattern时，该属性可用于指定自定义的正则表达式。				
+				]]>
+				</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+
+	<element name="chartApp" type="tns:chartAppType"></element>
+	
+	<complexType name="chartAppType">
+		<sequence>
+			<element name="javaScript" type="tns:javaScriptType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="queryCondition"
+				type="tns:queryCondition_type" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="queryScript" type="tns:queryScript_type"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[
+		        			基于beanShell脚本固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+		        		]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="advancedSelect" type="tns:advancedSelect"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="chartData" type="tns:chartDataType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="actionButton" type="tns:actionButton"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="chartStyle" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="Column2D" />
+					<enumeration value="Column3D" />
+					<enumeration value="Pie2D" />
+					<enumeration value="Pie3D" />
+					<enumeration value="Line" />
+					<enumeration value="Bar2D" />
+					<enumeration value="Doughnut2D" />
+					<enumeration value="Doughnut3D" />
+					<enumeration value="Area2D" />
+					<enumeration value="MSColumn2D" />
+					<enumeration value="MSColumn3D" />
+					<enumeration value="MSLine" />
+					<enumeration value="MSArea" />
+					<enumeration value="MSBar2D" />
+					<enumeration value="MSBar3D" />
+					<enumeration value="StackedColumn2D" />
+					<enumeration value="StackedColumn3D" />
+					<enumeration value="StackedArea2D" />
+					<enumeration value="StackedBar2D" />
+					<enumeration value="StackedBar3D" />
+					<enumeration value="MSStackedColumn2D" />
+					<enumeration value="ScrollColumn2D" />
+					<enumeration value="ScrollLine2D" />
+					<enumeration value="ScrollArea2D" />
+					<enumeration value="ScrollStackedColumn2D" />
+					<enumeration value="MSCombi2D" />
+					<enumeration value="MSColumnLine3D" />
+					<enumeration value="MSCombiDY2D" />
+					<enumeration value="MSColumn3DLineDY" />
+					<enumeration value="StackedColumn3DLineDY" />
+					<enumeration value="MSStackedColumn2DLineDY" />					
+					
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="caption" type="string" use="required"></attribute>
+		<attribute name="XAxislabel" type="string"></attribute>
+		<attribute name="YAxislabel" type="string"></attribute>
+		<attribute name="width" type="string"></attribute>
+		<attribute name="height" type="string"></attribute>
+		<attribute name="showValue" type="boolean"></attribute>
+		<attribute name="extAttr" type="string" use="optional">
+			<annotation>
+				<documentation>用于设置Chart组件的其它扩展属性</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="orderBy" type="string" use="optional">
+			<annotation>
+				<documentation>
+					指定默认排序字段，可支持同时指定多个排序字段，写法同SQL标准格式，如：addvcd
+					desc,wrrcd asc
+				</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+
+	<complexType name="chartDataType">
+		<sequence>
+			<element name="data" type="tns:dataType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="dataType">
+		<sequence>
+			<element name="label" maxOccurs="1" minOccurs="1">
+				<complexType>
+					<sequence>
+						<element name="key" type="tns:key" maxOccurs="1"
+							minOccurs="0">
+						</element>
+					</sequence>
+					<attribute name="id" type="string"></attribute>
+					<attribute name="value" type="string"></attribute>
+				</complexType>
+			</element>
+			<element name="value" maxOccurs="1" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="key" type="tns:key" maxOccurs="1"
+							minOccurs="0">
+						</element>
+					</sequence>
+					<attribute name="id" type="string"></attribute>
+					<attribute name="value" type="string"></attribute>
+				</complexType>
+			</element>
+			<element name="data" type="tns:dataType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="link" type="tns:linkType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="iterateRecord" type="boolean">
+			<annotation>
+				<documentation>迭代取记录</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="groupBy" type="string">
+			<annotation>
+				<documentation>
+					<![CDATA[
+					groupBy 的作用，一是对该指定字段进行分组，二是会对指定字段进行升序排序<br>
+					如果处在iterateRecord=true 的第一层的Data时，可以不配置groupBy<br>
+					如果是第一层以上，（即iterateRecord=true的Data里包含有iterateRecord=true的Data）时，
+					必需在所有包含iterateRecord=true的Data上配置groupBy
+				]]>
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="extAttr" type="string" use="optional">
+			<annotation>
+				<documentation>可用于设置dataset标签的其它属性</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="javaScriptType">
+		<attribute name="src" type="string" use="required">
+			<annotation>
+				<documentation>
+					导入javascript文件的路径 必需以WebRoot为根路径以/打头
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="tabFrame_type">
+        <annotation>
+        	<documentation>配置子tab页，如用于主从表页面</documentation>
+        </annotation>
+        <sequence>
+			<element name="tab" type="tns:tab_type"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+		</sequence>
+		<attribute name="align">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="right" />
+					<enumeration value="bottom" />
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="size" type="int"></attribute>
+	</complexType>
+
+	<complexType name="tab_type">
+		<sequence>
+			<element name="param" type="tns:paramType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="title" type="string" use="required"></attribute>
+		<attribute name="url" type="string" use="required"></attribute>
+		<attribute name="authKey" type="string" use="optional"></attribute>
+	</complexType>
+
+	<complexType name="fieldGroup_type">
+		<sequence>
+			<element name="property" type="tns:property"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="fieldGroup" type="tns:fieldGroup_type" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+		<attribute name="msg" type="string" use="required"></attribute>
+		<attribute name="canClose" type="boolean" use="optional"></attribute>
+		<attribute name="fixColumn" type="int" use="optional"></attribute>
+	</complexType>
+
+	<element name="dynamicChartApp" type="tns:dynamicChartAppType"></element>
+
+	<complexType name="dynamicChartAppType">
+		<sequence>
+            <element name="javaScript" type="tns:javaScriptType" maxOccurs="unbounded" minOccurs="0"></element>            		
+			<element name="queryCondition" type="tns:queryCondition_type" maxOccurs="1" minOccurs="0"></element>
+			<element name="queryScript"
+				type="tns:queryScript_type" maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[
+		        			基于beanShell脚本固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+		        		]]>
+					</documentation>
+				</annotation>
+			</element>
+            <element name="advancedSelect" type="tns:advancedSelect" maxOccurs="1" minOccurs="0"></element>
+            <element name="xaxis" type="tns:xaxisType" maxOccurs="1"
+				minOccurs="1">
+			</element>
+            <element name="dataSet" type="tns:dataSetType" maxOccurs="1" minOccurs="1"></element>
+			<element name="actionButton" type="tns:actionButton"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="caption" type="string" use="required"></attribute>
+		<attribute name="XAxislabel" type="string"></attribute>
+		<attribute name="YAxislabel" type="string"></attribute>
+		<attribute name="width" type="string"></attribute>
+		<attribute name="height" type="string"></attribute>
+		<attribute name="showValue" type="boolean"></attribute>
+	</complexType>
+
+	<complexType name="xaxisType">
+		<sequence>
+			<element name="xfield" type="tns:xfieldType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="xfieldType">
+		<sequence>
+			<element name="key" type="tns:key" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+	</complexType>
+
+	<complexType name="dataSetType">
+		<sequence>
+			<element name="dataField" type="tns:dataFieldType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="dataFieldType">
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="msg" type="string" use="required"></attribute>
+	</complexType>
+
+	<complexType name="foots_type">
+        <annotation>
+        	<documentation>列表脚统计行组</documentation>
+        </annotation>
+        <sequence>
+			<element name="foot" type="tns:foot_type" maxOccurs="unbounded" minOccurs="1">
+				<annotation>
+					<documentation>列表脚统计行</documentation>
+				</annotation></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="foot_type">
+        <annotation>
+        	<documentation>列表脚统计行</documentation>
+        </annotation>
+        <attribute name="type" use="required">
+            <annotation>
+            	<documentation>
+            		sum:累计值 avg:平均值 max:最大值 min:最小值
+            	</documentation>
+            </annotation>
+            <simpleType>
+				<restriction base="string">
+					<enumeration value="sum" />
+					<enumeration value="avg" />
+					<enumeration value="max" />
+					<enumeration value="min" />
+				</restriction>
+			</simpleType>		
+		</attribute>
+	</complexType>
+
+	<complexType name="queryCondition_type">
+        <annotation>
+        	<documentation><![CDATA[
+        		固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+        	]]></documentation>
+        </annotation>
+        <sequence>
+			<element name="param" type="tns:paramType" maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>动态参数</documentation>
+				</annotation></element>
+		</sequence>
+		<attribute name="where" type="string" use="required">
+			<annotation>
+				<documentation>
+					<![CDATA[				
+					SQL查询条件。 可支持动态参数，如addv=${addv}， 动态参数以${ }为标识符，
+					该动态参数必需结合param子结点使用， param里id的名称和${name}里的name对应 如:
+					<BR>
+					<blockquote><pre>
+					&lt;queryCondition where=&quot;addv=${addvcd}&quot;&gt;
+						&lt;param id=&quot;addvcd&quot; value=&quot;addvId&quot;
+							scope=&quot;request&quot;&gt;
+					&lt;/queryCondition&gt;
+					</pre></blockquote>
+				]]>
+				</documentation>
+			</annotation></attribute>
+	</complexType>
+	
+	<complexType name="queryScript_type">
+        <annotation>
+        	<documentation><![CDATA[
+        		beanShell固定SQL查询条件，配置完后该条件将做为当前App取数据时必需的条件。
+        	]]></documentation>
+        </annotation>
+        <sequence>
+        	<element name="imports" type="tns:importType" maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[			
+						需要导入的包或者类名<br>
+						书写格式:直接写包名+类名，以;结尾，比如qlight.frames.security.SecurityAuthContext;
+						]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="param" type="tns:paramType" maxOccurs="unbounded" minOccurs="0">
+				<annotation>
+					<documentation>动态参数</documentation>
+				</annotation></element>
+				<element name="script" type="string" maxOccurs="1" minOccurs="1">
+				<annotation>
+					<documentation>
+						beanShell脚本  返回变量必须是where
+						会将where的值当成查询条件做过滤
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="importType">
+		<attribute name="value" type="string" use="required">
+			<annotation>
+				<documentation>
+					<![CDATA[			
+					需要导入的包或者类名<br>
+					书写格式:直接写包名+类名，以;结尾，比如qlight.frames.security.SecurityAuthContext;
+					]]>
+				</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+	
+
+	<element name="project">
+		<complexType>
+			<sequence>
+				<element name="multiDBSource" maxOccurs="1" minOccurs="1">
+                    <complexType>
+                    	<sequence>
+                    		<element name="DBSource"
+                    			maxOccurs="unbounded" minOccurs="1">
+                    			<complexType>
+
+                    				<attribute name="id" type="string"
+                    					use="required">
+                    				</attribute>
+                    				<attribute name="managerBean"
+                    					type="string" use="required">
+                    				</attribute>
+                    				<attribute name="dataSourceBean"
+                    					type="string" use="required">
+                    				</attribute>
+                    				<attribute name="baseDaoBean"
+                    					type="string" use="required">
+                    				</attribute>
+                    			</complexType>
+                    		</element>
+                    	</sequence>
+                    	<attribute name="mainSource" type="string"></attribute>
+                    </complexType>
+				</element>
+				<element name="tableXml" maxOccurs="1" minOccurs="1">
+					<complexType>
+						<sequence>
+							<element name="tableXmlItem"
+								maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<attribute name="id"
+										type="string" use="required">
+									</attribute>
+									<attribute name="value"
+										type="string" use="required">
+									</attribute>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="domain" maxOccurs="1" minOccurs="1">
+					<complexType>
+						<sequence>
+							<element name="domainItem"
+								maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<attribute name="id"
+										type="string" use="required">
+									</attribute>
+									<attribute name="value"
+										type="string" use="required">
+									</attribute>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				
+			</sequence>
+		</complexType>
+	</element>
+
+
+</schema>

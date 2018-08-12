@@ -1,0 +1,38 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts> 
+   <constant name="struts.objectFactory" value="spring"/>  
+   <constant name="struts.custom.i18n.resources" value="MsgResource"/>  
+   <!-- 下面一条语句解决中文乱码 -->  
+   <constant name="struts.i18n.encoding" value="UTF-8"/>  
+   <!-- 下面的配置用于开发阶段,发布时应该去除 -->  
+   <constant name="struts.i18n.reload" value="true"/>  
+   <constant name="struts.devMode" value="true"/>  
+   <constant name="struts.configuration.xml.reload" value="true"/>  
+   <!-- 默认以.qact为结尾 -->  
+   <constant name="struts.action.extension" value="qact"/>  
+   <!-- 该属性指定视图主题所需要模板文件的位置，该属性的默认值是template，即默认加载template路径下的模板文件。
+   <constant name="struts.ui.templateDir" value="qlight-template" /> -->  
+   <!--QLIGHT框架公共配置，请勿删除 -->  
+   <include file="qlight/frames/config/struts/struts-base.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-Au_authorities.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-Au_resource.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-RoleResouece.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-Au_userinfo.xml"/>  
+   <include file="qlight/frames/log/strutsxml/struts-Sys_Log.xml"/>  
+   <include file="qlight/frames/code/strutsxml/struts-sys_code.xml"/>  
+   <include file="qlight/frames/upload/strutsxml/struts-sys_upload.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-au_organization.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-au_user_org.xml"/>  
+   <include file="qlight/frames/security/strutsxml/struts-au_roles.xml"/>  
+   <include file="qlight/water/strutsxml/struts-addvview.xml"/>  
+   <include file="qlight/water/strutsxml/struts-wrrview.xml"/>  
+   <include file="qlight/water/strutsxml/struts-waunitview.xml"/>  
+   <include file="qlight/frames/notice/strutsxml/struts-sys_notice.xml"/>  
+   <include file="qlight/frames/notice/strutsxml/struts-sys_template.xml"/>  
+   <include file="qlight/frames/code/strutsxml/struts-sys_dict.xml"/>  
+   <include file="qlight/frames/code/strutsxml/struts-fldlist.xml"/>  
+   <include file="qlight/onlinedev/strutsxml/struts-onlinedev.xml"/>  
+   <!-- 以下为自定义配置 -->  
+   <include file="com/wh/test/strutsxml/struts-test.xml"/>  
+</struts>

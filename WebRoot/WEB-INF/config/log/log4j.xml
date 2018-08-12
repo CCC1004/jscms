@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration SYSTEM "E:\Java组件\jdbcappender\src\org\apache\log4j\jdbcplus\examples\test\log4j.dtd">  
+     
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' >  
+     
+     <!--控制台输出-->  
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"     
+                value="[%d{HH:mm:ss,SSS\} %-5p] %c{2\} - %m%n" />  
+        </layout>  
+        <!--过滤器设置输出的级别
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="levelMin" value="debug" />  
+            <param name="levelMax" value="warn" />  
+            <param name="AcceptOnMatch" value="true" />  
+        </filter>  
+        -->  
+    </appender>  
+  	<!--文件输出--> 
+    <appender name="myFile" class="org.apache.log4j.RollingFileAppender">     
+        <param name="File" value="${qlight.root}/WEB-INF/logs/db.log" /><!-- 设置日志输出文件名 -->  
+        <!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->  
+        <param name="Append" value="true" />  
+        <param name="MaxBackupIndex" value="10" />  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"  value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n"/>  
+        </layout>  
+    </appender>  
+    
+    <!--数据库输出-->  
+    <appender name="JDBC" class="org.apache.log4j.jdbcplus.JDBCAppender">
+		<param name="connector" value="qlight.frames.log.util.LogConnectionHandler" />
+		<param name="table" value="sys_log" /> 
+		<!--  
+		<param name="column" value="ID~ORACLE_SEQUENCE~SYS_LOG_ID_SEQ" />-->
+		
+		<param name="column" value="prio~PRIO" />
+		<param name="column" value="cat~CAT" />
+		<param name="column" value="thread~THREAD" />
+		<param name="column" value="msg~MSG" />
+		<param name="column" value="throwable~THROWABLE" />
+		<param name="column" value="userId~MDC~userId" />
+		<param name="column" value="the_datetime~TIMESTAMP" />
+		<param name="commit" value="false" />
+		<param name="usePreparedStatements" value="true" />  
+    </appender>
+     
+    <!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->  
+    <logger name="qlight" additivity="true" >  
+    	<level value="info" ></level>
+
+        <appender-ref ref="JDBC"/>  
+    </logger>  
+    
+    <logger name="org.springframework.security" additivity="true" >  
+        <level value ="debug"  />    
+        <!--把以下注释，否则会重复输出到Console
+        <appender-ref ref="Console"  />  
+        -->  
+    </logger>    
+    
+    
+    <logger name="org.apache.struts2" additivity="true" >  
+        <level value ="debug"  />    
+        <!--把以下注释，否则会重复输出到Console
+        <appender-ref ref="Console"  />  
+        -->  
+    </logger>       
+    
+  
+    <!-- 根logger的设置-->  
+    <root>      
+        <priority value ="error"/>  
+        <appender-ref ref="Console"/>  
+    </root>  
+    <!-- sql 监视
+     <logger name="com.ibatis.common.jdbc.SimpleDataSource" additivity="true" >  
+        <level value ="debug"  />    
+    </logger>
+     <logger name="com.ibatis.common.jdbc.ScriptRunner" additivity="true" >  
+        <level value ="debug"  />    
+    </logger>
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" additivity="true" >  
+        <level value ="debug"  />    
+    </logger>  
+    <logger name="java.sql.Connection" additivity="true" >  
+        <level value ="debug"  />    
+    </logger>
+    <logger name="java.sql.Statement" additivity="true" >  
+        <level value ="debug"  />    
+    </logger>
+    <logger name="java.sql.PreparedStatement" additivity="true" >  
+        <level value ="debug"  />    
+    </logger>    
+    -->  
+</log4j:configuration>  

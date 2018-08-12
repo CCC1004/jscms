@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.ewatersoft.com/QLight/1.6">
+  <multiDBSource mainSource="qlight">
+    <DBSource id="qlight" managerBean="baseManager" dataSourceBean="dataSource" baseDaoBean="baseDao"/>
+    <DBSource id="ql" managerBean="qlbaseManager" dataSourceBean="qldataSource" baseDaoBean="qlbaseDao"/>
+  </multiDBSource>
+  <models>
+    <model id="ql.Au_roles" pojoClass="qlight.frames.security.model.AuRoles">
+      <viewXml path="qlight/frames/security/viewxml/Au_roles.xml"/>
+      <service beanId="auRolesService"/>
+    </model>
+    <model id="ql.Au_userinfo" pojoClass="qlight.frames.security.model.AuUserinfo">
+      <viewXml path="qlight/frames/security/viewxml/Au_userinfo.xml"/>
+      <service beanId="auUserinfoService"/>
+    </model>
+    <model id="ql.Au_authorities" pojoClass="qlight.frames.security.model.AuAuthorities">
+      <viewXml path="qlight/frames/security/viewxml/Au_authorities.xml"/>
+    </model>
+    <model id="ql.Au_resource" pojoClass="qlight.frames.security.model.AuResource">
+      <viewXml path="qlight/frames/security/viewxml/Au_resource.xml"/>
+      <service beanId="auResourceService"/>
+    </model>
+    <model id="ql.Au_role_resource" pojoClass="qlight.frames.security.model.AuRoleResource">
+      <viewXml path="qlight/frames/security/viewxml/Au_role_resource.xml"/>
+    </model>
+    <model id="ql.Au_user_role" pojoClass="qlight.frames.security.model.AuUserRole">
+      <viewXml path="qlight/frames/security/viewxml/Au_user_role.xml"/>
+    </model>
+    <model id="ql.Au_organization" pojoClass="qlight.frames.security.model.AuOrganization">
+      <viewXml path="qlight/frames/security/viewxml/Au_organization.xml"/>
+      <service beanId="auOrganizationService"/>
+    </model>
+    <model id="ql.Au_user_org" pojoClass="qlight.frames.security.model.AuUserOrg">
+      <viewXml path="qlight/frames/security/viewxml/Au_user_org.xml"/>
+    </model>
+    <model id="ql.Au_org_type" pojoClass="qlight.frames.security.model.AuOrgType">
+      <viewXml path="qlight/frames/security/viewxml/Au_org_type.xml"/>
+    </model>
+    <model id="Sys_menu" pojoClass="qlight.frames.menu.model.SysMenu">
+      <viewXml path="qlight/frames/menu/viewxml/Menu.xml"/>
+    </model>
+    <model id="Au_outerapp" pojoClass="qlight.frames.menu.model.AuOuterapp">
+      <viewXml path="qlight/frames/menu/viewxml/Au_outerapp.xml"/>
+    </model>
+    <model id="Sys_log" pojoClass="qlight.frames.log.model.SysLog">
+      <viewXml path="qlight/frames/log/viewxml/Sys_log.xml"/>
+    </model>
+    <model id="Sys_code" pojoClass="qlight.frames.code.model.SysCode">
+      <viewXml path="qlight/frames/code/viewxml/Sys_code.xml"/>
+    </model>
+    <model id="Sys_message" pojoClass="qlight.frames.message.model.SysMessage">
+      <viewXml path="qlight/frames/message/viewxml/Sys_message.xml"/>
+    </model>
+    <model id="Sys_parameter" pojoClass="qlight.frames.parameter.model.SysParameter">
+      <viewXml path="qlight/frames/parameter/viewxml/Sys_parameter.xml"/>
+    </model>
+    <model id="Sys_dict" pojoClass="qlight.frames.code.model.SysDict">
+      <viewXml path="qlight/frames/code/viewxml/Sys_dict.xml"/>
+      <service beanId="dictService"/>
+    </model>
+    <model id="Sys_notice" pojoClass="qlight.frames.notice.model.SysNotice">
+      <viewXml path="qlight/frames/notice/viewxml/Sys_notice.xml"/>
+    </model>
+    <model id="Sys_template" pojoClass="qlight.frames.notice.model.SysTemplate">
+      <viewXml path="qlight/frames/notice/viewxml/Sys_template.xml"/>
+    </model>
+    <model id="Sys_mail" pojoClass="qlight.frames.notice.model.SysMail"/>
+    <model id="Sys_sequence" pojoClass="qlight.frames.sequence.model.SysSequence"/>
+    <model id="Sys_upload" pojoClass="qlight.frames.upload.model.SysUpload"/>
+    <model id="Fldlist" pojoClass="qlight.frames.code.model.Fldlist">
+      <viewXml path="qlight/frames/code/viewxml/Fldlist.xml"/>
+    </model>
+    <model id="Tablist" pojoClass="qlight.frames.code.model.Tablist">
+      <viewXml path="qlight/frames/code/viewxml/Tablist.xml"/>
+    </model>
+    <model id="Addvview" pojoClass="qlight.water.model.Addvview">
+      <viewXml path="qlight/water/xmlview/Addvview.xml"/>
+    </model>
+    <model id="Wrrview" pojoClass="qlight.water.model.Wrrview">
+      <viewXml path="qlight/water/xmlview/Wrrview.xml"/>
+    </model>
+    <model id="Waunitview" pojoClass="qlight.water.model.Waunitview">
+      <viewXml path="qlight/water/xmlview/Waunitview.xml"/>
+    </model>
+    <model id="Addv" pojoClass="qlight.water.model.Addv">
+      <viewXml path="qlight/water/xmlview/Addv.xml"/>
+    </model>
+    <model id="Waunit" pojoClass="qlight.water.model.Waunit">
+      <viewXml path="qlight/water/xmlview/Waunit.xml"/>
+    </model>
+    <model id="Wrr" pojoClass="qlight.water.model.Wrr">
+      <viewXml path="qlight/water/xmlview/Wrr.xml"/>
+    </model>
+     <!-- 以上为公共配置，请勿删除 -->  
+     
+  </models>
+</project>

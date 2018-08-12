@@ -1,0 +1,283 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*审批，受理，退回，返回，计算，核实，选择，关闭，对比，生成，申报，下达，评论，分派，注销，制作，当月，接受，备案，登记，发布，上报，填报，审核，吊销，制定，提交，统计，累计，添加，取消，查询，导出，删除，下达，导入，打印，保存，上传，重置40*/
+.but_acc,.but_acc01,.but_accept,.but_accept01,.but_back1,.but_back101,.but_back2,.but_back201,.but_cal,.but_cal01,.but_check,.but_check01,.but_choose,.but_choose01,.but_close,.but_close01,.but_con,.but_con01,.but_create,.but_create01,.but_dec,.but_dec01,.but_dir,.but_dir01,.but_eva,.but_eva01,.but_fp,.but_fp01,.but_logoff,.but_logoff01,.but_make,.but_make01,.but_mon,.but_mon01,.but_rec,.but_rec01,.but_record,.but_record01,.but_reg1,.but_reg101,.but_rel,.but_rel01,.but_report,.but_report01,.but_reported,.but_reported01,.but_rev,.but_rev01,.but_revoke,.but_revoke01,.but_set,.but_set01,.but_sub,.but_sub01,.but_tj,.but_tj01,.but_total,.but_total01,.button_add,.button_add01,.button_cancel,.button_cancel01,.button_check,.button_check01,.button_daochu,.button_daochu01,.button_delete,.button_delete01,.button_download,.button_download01,.button_importing,.button_importing01,.button_print,.button_print01,.button_all,.button_save,.button_save01,.button_upload,.button_upload01,.reset,.reset01{
+	width:73px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+	}
+.but_pj,.but_pj01.but_pg,.but_pg01{
+	width:73px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+}
+.but_tjddzl,.but_tjddzl01{
+	width:120px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+}
+.but_tjddzl{background:url(../images/button/but_tjddzl.png) left top no-repeat;}
+.but_tjddzl01{background:url(../images/button/but_tjddzl01.png) left top no-repeat;}
+.but_pj{background:url(../images/button/but_pj.png) left top no-repeat;}	
+.but_pj01{background:url(../images/button/but_pj01.png) left top no-repeat;}
+
+.but_pg{background:url(../images/button/but_pg.png) left top no-repeat;}	
+.but_pg01{background:url(../images/button/but_pg01.png) left top no-repeat;}
+
+.but_acc{background:url(../images/button/but_acc.png) left top no-repeat;}	
+.but_acc01{background:url(../images/button/but_acc01.png) left top no-repeat;}	
+
+.but_accept{background:url(../images/button/but_accept.png) left top no-repeat;}
+.but_accept01{background:url(../images/button/but_accept01.png) left top no-repeat;}
+
+.but_back1{background:url(../images/button/but_back1.png) left top no-repeat;}
+.but_back101{background:url(../images/button/but_back101.png) left top no-repeat;}
+
+.but_back2{background:url(../images/button/but_back2.png) left top no-repeat;}
+.but_back201{background:url(../images/button/but_back201.png) left top no-repeat;}
+
+.but_cal{background:url(../images/button/but_cal.png) left top no-repeat;}
+.but_cal01{background:url(../images/button/but_cal01.png) left top no-repeat;}
+
+.but_check{background:url(../images/button/but_check.png) left top no-repeat;}
+.but_check01{background:url(../images/button/but_check01.png) left top no-repeat;}
+
+.but_choose{background:url(../images/button/but_choose.png) left top no-repeat;}
+.but_choose01{background:url(../images/button/but_choose01.png) left top no-repeat;}
+
+.but_close{background:url(../images/button/but_close.png) left top no-repeat;}
+.but_close01{background:url(../images/button/but_close01.png) left top no-repeat;}
+
+.but_con{background:url(../images/button/but_con.png) left top no-repeat;}
+.but_con01{background:url(../images/button/but_con01.png) left top no-repeat;}
+
+.but_create{background:url(../images/button/but_create.png) left top no-repeat;}
+.but_create01{background:url(../images/button/but_create01.png) left top no-repeat;}
+
+.but_dec{background:url(../images/button/but_dec.png) left top no-repeat;}
+.but_dec01{background:url(../images/button/but_dec01.png) left top no-repeat;}
+
+.but_dir{background:url(../images/button/but_dir.png) left top no-repeat;}
+.but_dir01{background:url(../images/button/but_dir01.png) left top no-repeat;}
+
+.but_eva{background:url(../images/button/but_eva.png) left top no-repeat;}
+.but_eva01{background:url(../images/button/but_eva01.png) left top no-repeat;}
+
+.but_fp{background:url(../images/button/but_fp.png) left top no-repeat;}
+.but_fp01{background:url(../images/button/but_fp01.png) left top no-repeat;}
+
+.but_logoff{background:url(../images/button/but_logoff.png) left top no-repeat;}
+.but_logoff01{background:url(../images/button/but_logoff01.png) left top no-repeat;}
+
+.but_make{background:url(../images/button/but_make.png) left top no-repeat;}
+.but_make01{background:url(../images/button/but_make01.png) left top no-repeat;}
+
+.but_mon{background:url(../images/button/but_mon.png) left top no-repeat;}
+.but_mon01{background:url(../images/button/but_mon01.png) left top no-repeat;}
+
+.but_rec{background:url(../images/button/but_rec.png) left top no-repeat;}
+.but_rec01{background:url(../images/button/but_rec01.png) left top no-repeat;}
+
+.but_record{background:url(../images/button/but_record.png) left top no-repeat;}
+.but_record01{background:url(../images/button/but_record01.png) left top no-repeat;}
+
+.but_reg1{background:url(../images/button/but_reg1.png) left top no-repeat;}
+.but_reg101{background:url(../images/button/but_reg101.png) left top no-repeat;}
+
+.but_rel{background:url(../images/button/but_rel.png) left top no-repeat;}
+.but_rel01{background:url(../images/button/but_rel01.png) left top no-repeat;}
+
+.but_report{background:url(../images/button/but_report.png) left top no-repeat;}
+.but_report01{background:url(../images/button/but_report01.png) left top no-repeat;}
+
+.but_reported{background:url(../images/button/but_reported.png) left top no-repeat;}
+.but_reported01{background:url(../images/button/but_reported01.png) left top no-repeat;}
+
+.but_rev{background:url(../images/button/but_rev.png) left top no-repeat;}
+.but_rev01{background:url(../images/button/but_rev01.png) left top no-repeat;}
+
+.but_revoke{background:url(../images/button/but_revoke.png) left top no-repeat;}
+.but_revoke01{background:url(../images/button/but_revoke01.png) left top no-repeat;}
+
+.but_set{background:url(../images/button/but_set.png) left top no-repeat;}
+.but_set01{background:url(../images/button/but_set01.png) left top no-repeat;}
+
+.but_sub{background:url(../images/button/but_sub.png) left top no-repeat;}
+.but_sub01{background:url(../images/button/but_sub01.png) left top no-repeat;}
+
+.but_tj{background:url(../images/button/but_tj.png) left top no-repeat;}
+.but_tj01{background:url(../images/button/but_tj01.png) left top no-repeat;}
+
+.but_total{background:url(../images/button/but_total.png) left top no-repeat;}
+.but_total01{background:url(../images/button/but_total01.png) left top no-repeat;}
+
+.button_add{background:url(../images/button/button_add.png) left top no-repeat;}
+.button_add01{background:url(../images/button/button_add01.png) left top no-repeat;}
+
+.button_cancel{background:url(../images/button/button_cancel.png) left top no-repeat;}
+.button_cancel01{background:url(../images/button/button_cancel01.png) left top no-repeat;}
+
+.button_check{background:url(../images/button/button_check.png) left top no-repeat;}
+.button_check01{background:url(../images/button/button_check01.png) left top no-repeat;}
+
+.button_daochu{background:url(../images/button/button_daochu.png) left top no-repeat;}
+.button_daochu01{background:url(../images/button/button_daochu01.png) left top no-repeat;}
+
+.button_delete{background:url(../images/button/button_delete.png) left top no-repeat;}
+.button_delete01{background:url(../images/button/button_delete01.png) left top no-repeat;}
+
+.button_download{background:url(../images/button/button_download.png) left top no-repeat;}
+.button_download01{background:url(../images/button/button_download01.png) left top no-repeat;}
+
+.button_importing{background:url(../images/button/button_importing.png) left top no-repeat;}
+.button_importing01{background:url(../images/button/button_importing01.png) left top no-repeat;}
+
+.button_print{background:url(../images/button/button_print.png) left top no-repeat;}
+.button_print01{background:url(../images/button/button_print01.png) left top no-repeat;}
+/*button 通用 需要value里写明按扭名称*/
+.button_all{background:url(../images/button/button_all.png) left top no-repeat;  font-size: 14px}
+.button_all01{background:url(../images/button/button_all01.png) left top no-repeat;}
+
+.button_save{background:url(../images/button/button_save.png) left top no-repeat;}
+.button_save01{background:url(../images/button/button_save01.png) left top no-repeat;}
+
+.button_upload{background:url(../images/button/button_upload.png) left top no-repeat;}
+.button_upload01{background:url(../images/button/button_upload01.png) left top no-repeat;}
+
+.reset{background:url(../images/button/reset.png) left top no-repeat;}
+.reset01{background:url(../images/button/reset01.png) left top no-repeat;}
+
+/*审批不通过，审批通过， 高级条件，汇总数据，汇总填报，下载附件，方案对比，方案附件，引入信息，基于模板制作，监测信息，新建计划，处置登记，本级填报，送审批，不受理，信息推送，地图选址，超警通知，累计图，月柱形图*/
+.but_accfail,.but_accfail01,.but_accpass,.but_accpass01,.but_advanced,.but_advanced01,.but_collect,.but_collect01,.but_coreported,.but_coreported01,.but_dlfile,.but_dlfile01,.but_fadb,.but_fadb01,.but_file,.but_file01,.but_impi,.but_impi01,.but_jymbzz,.but_jymbzz01,.but_moni,.but_moni01,.but_newplan,.but_newplan01,.but_reg,.but_reg01,.but_threported,.but_threported01,.but_toacc,.but_toacc01,.but_unaccept,.but_unaccept01,.but_xxts,.but_xxts01,.but_remove,.but_remove01,.but_dtxz,.but_dtxz01,.but_scsy,.but_scsy01,.but_cjtz,.but_cjtz01,.but_yzxt,.but_yzxt01{
+	width:93px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+	}
+	
+.but_accfail,.but_accfail01,.but_jcdjr,.but_jcdjr01{
+	width:104px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+	}	
+.but_jymbzz,.but_jymbzz01,.but_szqxzy,.but_szqxzy01,.but_kscjya,.but_kscjya01{
+	width:115px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+	}
+	
+.but_kscjya{background:url(../images/button/but_kscjya.png) left top no-repeat;}
+.but_kscjya01{background:url(../images/button/but_kscjya01.png) left top no-repeat;}
+
+.but_bcbjxtj,.but_bcbjxtj01{
+	width:129px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+	}	
+.but_toacc,.but_toacc01,.but_unaccept,.but_unaccept01,.but_ljt,.but_ljt01{
+	width:79px;
+	height:29px;
+	cursor:pointer;
+	border:none;
+	}	
+	
+.but_accfail{background:url(../images/button/but_accfail.png) left top no-repeat;}
+.but_accfail01{background:url(../images/button/but_accfail01.png) left top no-repeat;}	
+
+.but_accpass{background:url(../images/button/but_accpass.png) left top no-repeat;}
+.but_accpass01{background:url(../images/button/but_accpass01.png) left top no-repeat;}	
+
+.but_advanced{background:url(../images/button/but_advanced.png) left top no-repeat;}
+.but_advanced01{background:url(../images/button/but_advanced01.png) left top no-repeat;}	
+
+.but_collect{background:url(../images/button/but_collect.png) left top no-repeat;}
+.but_collect01{background:url(../images/button/but_collect01.png) left top no-repeat;}	
+
+.but_coreported{background:url(../images/button/but_coreported.png) left top no-repeat;}
+.but_coreported01{background:url(../images/button/but_coreported01.png) left top no-repeat;}
+
+.but_dlfile{background:url(../images/button/but_dlfile.png) left top no-repeat;}
+.but_dlfile01{background:url(../images/button/but_dlfile01.png) left top no-repeat;}
+
+.but_fadb{background:url(../images/button/but_fadb.png) left top no-repeat;}
+.but_fadb01{background:url(../images/button/but_fadb01.png) left top no-repeat;}	
+
+.but_file{background:url(../images/button/but_fadb.png) left top no-repeat;}
+.but_file01{background:url(../images/button/but_fadb01.png) left top no-repeat;}	
+
+.but_impi{background:url(../images/button/but_impi.png) left top no-repeat;}
+.but_impi01{background:url(../images/button/but_impi01.png) left top no-repeat;}	
+
+.but_jymbzz{background:url(../images/button/but_jymbzz.png) left top no-repeat;}
+.but_jymbzz01{background:url(../images/button/but_jymbzz01.png) left top no-repeat;}
+
+.but_moni{background:url(../images/button/but_moni.png) left top no-repeat;}
+.but_moni01{background:url(../images/button/but_moni01.png) left top no-repeat;}
+
+.but_newplan{background:url(../images/button/but_newplan.png) left top no-repeat;}
+.but_newplan01{background:url(../images/button/but_newplan01.png) left top no-repeat;}	
+
+.but_reg{background:url(../images/button/but_reg.png) left top no-repeat;}
+.but_reg01{background:url(../images/button/but_reg01.png) left top no-repeat;}	
+
+.but_threported{background:url(../images/button/but_threported.png) left top no-repeat;}
+.but_threported01{background:url(../images/button/but_threported01.png) left top no-repeat;}	
+
+.but_toacc{background:url(../images/button/but_toacc.png) left top no-repeat;}
+.but_toacc01{background:url(../images/button/but_toacc01.png) left top no-repeat;}	
+
+.but_unaccept{background:url(../images/button/but_unaccept.png) left top no-repeat;}
+.but_unaccept01{background:url(../images/button/but_unaccept01.png) left top no-repeat;}
+
+.but_xxts{background:url(../images/button/but_xxts.png) left top no-repeat;}
+.but_xxts01{background:url(../images/button/but_xxts01.png) left top no-repeat;}
+
+.but_remove{background:url(../images/button/but_remove.png) left top no-repeat;}
+.but_remove01{background:url(../images/button/but_remove01.png) left top no-repeat;}
+
+.but_dtxz{background:url(../images/button/but_dtxz.png) left top no-repeat;}
+.but_dtxz01{background:url(../images/button/but_dtxz01.png) left top no-repeat;}
+
+.but_jcdjr{background:url(../images/button/but_jcdjr.png) left top no-repeat;}
+.but_jcdjr01{background:url(../images/button/but_jcdjr01.png) left top no-repeat;}
+
+.but_szqxzy{background:url(../images/button/but_szqxzy.png) left top no-repeat;}
+.but_szqxzy01{background:url(../images/button/but_szqxzy01.png) left top no-repeat;}
+
+.but_bcbjxtj{background:url(../images/button/but_bcbjxtj.png) left top no-repeat;}
+.but_bcbjxtj01{background:url(../images/button/but_bcbjxtj01.png) left top no-repeat;}
+
+.but_scsy{background:url(../images/button/but_scsy.png) left top no-repeat;}
+.but_scsy01{background:url(../images/button/but_scsy01.png) left top no-repeat;}
+
+.but_yzxt{background:url(../images/button/but_yzxt.png) left top no-repeat;}
+.but_yzxt01{background:url(../images/button/but_yzxt01.png) left top no-repeat;}
+
+.but_cjtz{background:url(../images/button/but_cjtz.png) left top no-repeat;}
+.but_cjtz01{background:url(../images/button/but_cjtz01.png) left top no-repeat;}
+
+.but_ljt{background:url(../images/button/but_ljt.png) left top no-repeat;}
+.but_ljt01{background:url(../images/button/but_ljt01.png) left top no-repeat;}
+
+/*确定，查询，更多*/
+.but_determine,.but_determine01,.but_find,.but_find01,.but_more,.but_more01{
+	width:54px;
+	height:24px;
+    cursor:pointer;
+	border:none;	
+	}	
+.but_determine{background:url(../images/button/but_determine.png) left top no-repeat;}
+.but_determine01{background:url(../images/button/but_determine01.png) left top no-repeat;}
+
+.but_find{background:url(../images/button/but_find.png) left top no-repeat;}
+.but_find01{background:url(../images/button/but_find01.png) left top no-repeat;}
+
+.but_more{background:url(../images/button/but_more.png) left top no-repeat;}
+.but_more01{background:url(../images/button/but_more01.png) left top no-repeat;}			

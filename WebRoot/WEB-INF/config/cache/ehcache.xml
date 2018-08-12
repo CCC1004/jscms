@@ -1,0 +1,127 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<diskStore path="java.io.tmpdir" />
+	<cacheManagerEventListenerFactory class="" properties="" />
+
+<!-- 
+<diskStore>元素：指定一个文件目录，当EHCache把数据写到硬盘上时，将把数据写到这个文件目录下。
+<defaultCache>元素：设定缓存的默认数据过期策略。
+<cache>元素：设定具体的命名缓存的数据过期策略。
+<cache>元素的属性
+name：缓存名称。通常为缓存对象的类名（非严格标准）。
+maxElementsInMemory：设置基于内存的缓存可存放对象的最大数目。
+maxElementsOnDisk：设置基于硬盘的缓存可存放对象的最大数目。 
+eternal：如果为true，表示对象永远不会过期，此时会忽略timeToIdleSeconds和timeToLiveSeconds属性，默认为false;
+timeToIdleSeconds： 设定允许对象处于空闲状态的最长时间，以秒为单位。当对象自从最近一次被访问后，如果处于空闲状态的时间超过了timeToIdleSeconds属性值，这个对象就会过期。当对象过期，EHCache将把它从缓存中清空。只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地处于空闲状态。
+timeToLiveSeconds：设定对象允许存在于缓存中的最长时间，以秒为单位。当对象自从被存放到缓存中后，如果处于缓存中的时间超过了 timeToLiveSeconds属性值，这个对象就会过期。当对象过期，EHCache将把它从缓存中清除。只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地存在于缓存中。timeToLiveSeconds必须大于timeToIdleSeconds属性，才有意义。
+overflowToDisk：如果为true,表示当基于内存的缓存中的对象数目达到了maxElementsInMemory界限后，会把益出的对象写到基于硬盘的缓存中。
+-->   
+   <defaultCache
+        maxElementsInMemory="10000" 
+        eternal="false"              
+        timeToIdleSeconds="120"    
+        timeToLiveSeconds="120"    
+        overflowToDisk="true"     
+        
+    />    
+	
+	<!-- 表配置文件对应的Bean的缓存
+	项目发布时，把eternal改为true，使表配置只解析一次，提高速度 -->
+	<cache
+		name="tableXMLCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"              
+        timeToIdleSeconds="1"    
+        timeToLiveSeconds="1" 		
+		overflowToDisk="true"
+	/>  
+	
+	<!-- 用户信息的缓存 -->
+	<cache
+		name="userCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 用户表缓存 -->
+	<cache
+		name="AuUserinfo.auUserinfoCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 数据字典缓存 -->
+	<cache
+		name="SysCode.codeCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 菜单缓存 -->
+	<cache
+		name="Menu.menuCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 消息缓存 -->
+	<cache
+		name="SysMessage.messageCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 参数缓存 -->
+	<cache
+		name="SysParameter.parameterCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 组织缓存 -->
+	<cache
+		name="AuOrganization.auOrganizationCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+	
+	<!-- 组织与用户映射缓存 -->
+	<cache
+		name="AuUserOrg.auUserOrgCache"
+		maxElementsInMemory="300"
+		maxElementsOnDisk="500" 
+        eternal="false"   
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="43200" 
+		overflowToDisk="true"
+	/>  	
+
+</ehcache>

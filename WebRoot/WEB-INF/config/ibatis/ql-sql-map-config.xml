@@ -1,0 +1,20 @@
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig> 
+   <settings cacheModelsEnabled="true" enhancementEnabled="true" lazyLoadingEnabled="true" maxRequests="32" maxSessions="10" maxTransactions="5" useStatementNamespaces="true"/>  
+   <typeAlias alias="ehcache" type="qlight.frames.base.cache.IBatisEhCacheController"/>  
+   <typeAlias alias="outMap" type="qlight.frames.base.dao.ibatis.OutMap"/>  
+   <!--sqlMap resource="includes:mapping*.xml" / -->  
+   <!-- 公共配置，请勿删除 -->  
+   <sqlMap resource="qlight/frames/config/ibatis/SqlMapCommon.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_roles_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_authorities_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_resource_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_role_resource_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_user_role_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_userinfo_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_organization_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/au_user_org_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/security/sqlmap/AU_ORG_TYPE_SqlMap.xml"/>  
+
+</sqlMapConfig>

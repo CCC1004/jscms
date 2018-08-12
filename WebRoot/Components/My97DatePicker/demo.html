@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<script type="text/javascript" src="WdatePicker.js"></script>
+
+</HEAD>
+
+<BODY>
+示例1：<br>
+<input id="d11" type="text" onClick="WdatePicker()"/>
+<br><br><br>
+
+示例2：<br>
+<input id="d12" type="text"/>
+<img onclick="WdatePicker({el:'d12'})" src="../skin/datePicker.gif" width="16" height="22" align="absmiddle">
+<br><br><br>
+
+示例1-2-1 周显示简单应用 <br>
+<input id="d121" type="text" onfocus="WdatePicker({isShowWeek:true,firstDayOfWeek:1})"/>
+<br><br><br>
+示例1-2-2 利用onpicked事件把周赋值给另外的文本框 <br>
+<input type="text" class="Wdate" id="d122" onFocus="WdatePicker({isShowWeek:true,onpicked:function() {$dp.$('d122_1').value=$dp.cal.getP('W','W');$dp.$('d122_2').value=$dp.cal.getP('W','WW');}})"/>
+<br><br><br>
+
+示例1-5 禁用清空功能<br>
+<input class="Wdate" type="text" id="d15" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
+<br><br><br>
+
+示例1-6 通过position属性,自定义弹出位置<br>
+<input class="Wdate" type="text" id="d16" onfocus="WdatePicker({position:{left:100,top:50}})"/>
+<br><br><br>
+
+示例1-7 以星期一作为第一天<br>
+<input class="Wdate" type="text" id="d17" onfocus="WdatePicker({firstDayOfWeek:1})"/>
+<br><br><br>
+
+
+示例2-1 平面显示演示<br>
+<div id="div1"></div>
+<script>
+WdatePicker({eCont:'div1',onpicked:function(dp){alert('你选择的日期是:'+dp.cal.getDateStr())}})
+</script>
+
+
+示例4-3-2 前面的日期+3天 不能大于 后面的日期<br>
+<input type="text" class="Wdate" id="d4321" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\',{d:-3});}'})"/>
+<input type="text" class="Wdate" id="d4322" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4321\',{d:3});}'})"/>
+<br><br><br>
+
+
+示例5-2-1 onpicking事件演示<br>
+<input type="text" id="5421" onFocus="WdatePicker({isShowWeek:true,onpicking:function(dp){if(!confirm('日期框原来的值为: '+dp.cal.getDateStr()+', 要用新选择的值:' + dp.cal.getNewDateStr() + '覆盖吗?')) return true;}})" class="Wdate"/>
+
+<br><br><br>
+示例5-2-2 使用onpicked实现日期选择联动
+选择第一个日期的时候,第二个日期选择框自动弹出
+日期从:  至  
+注意:下面第一个控件代码的写法<br>
+<input id="d5221" class="Wdate" type="text" onFocus="var d5222=$dp.$('d5222');WdatePicker({onpicked:function(){d5222.focus();},maxDate:'#F{$dp.$D(\'d5222\')}'})"/>
+至
+<input id="d5222" class="Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d5221\')}'})"/>
+<br><br><br>
+
+示例6-1 传入2个静态日期<br>
+ 
+<input class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日',qsEnabled:true,quickSel:['2000-1-10','2000-2-20']})"/>
+<br><br><br>
+
+示例 2-4-1: 年月日时分秒<br>  俊之专用
+ 
+<input type="text" id="d241" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" style="width:300px"/>
+<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</BODY>
+</HTML>

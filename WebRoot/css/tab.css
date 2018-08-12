@@ -1,0 +1,40 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+	}
+body{
+	text-align:center;
+	overflow:hidden;
+	background-color:#fff}
+div{
+	width:100%;
+	margin:0 auto;
+	text-align:left;
+	}
+table{
+	width:100%;
+	border:none;
+	font-size:14px;
+	color:#000;
+	font-family:宋体 Verdana, Geneva, sans-serif;
+	}
+input{
+	font-size:14px;
+	color:#000;
+	}
+a{
+	font-size:14px;
+	text-decoration:none;
+	color:#09F;
+	cursor:pointer;
+	}
+a:hover{
+	text-decoration:underline;
+	}
+img{
+	border:none;
+	}
+
+

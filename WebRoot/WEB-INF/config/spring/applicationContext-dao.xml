@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+
+	<!-- DaoBean -->	
+	<bean id="abstractDao"
+		class="qlight.frames.base.dao.ibatis.BaseIBatisDao" abstract="true" init-method="initialize"/>
+		
+	<bean id="baseDao"  parent="abstractDao" >
+		<property name="dataSource" ref="dataSource" />
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlExecutor" ref="sqlExecutor"/>	
+	</bean>
+	
+	<bean id="qlbaseDao"  parent="abstractDao" >
+		<property name="dataSource" ref="qldataSource" />
+		<property name="sqlMapClient" ref="qlsqlMapClient" />
+		<property name="sqlExecutor" ref="sqlExecutor"/>
+	</bean>	
+	
+	<bean id="auOrganizationDao" class="qlight.frames.security.dao.AuOrganizationDao">
+	</bean>	
+	
+	<bean id="auRoleResourceDao" class="qlight.frames.security.dao.ResourceDao"> 
+		<property name="baseDao" ref="qlbaseDao"></property>
+	</bean>
+	
+	<bean id="auUserOrgDao" class="qlight.frames.security.dao.AuUserOrgDao">
+	</bean>	
+	
+	<bean id="auAuthDao" class="qlight.frames.security.dao.AuAuthDao">
+	</bean>
+	<bean id="auUserInfoDao" class="qlight.frames.security.dao.AuUserInfoDao" />
+	
+	<bean id="auUserRoleDao" class="qlight.frames.security.dao.UserAssignRoleDao">
+		<property name="baseIBatisDao" ref="qlbaseDao"></property>
+	</bean>
+	
+	<!-- 以下为自定义 -->
+</beans>

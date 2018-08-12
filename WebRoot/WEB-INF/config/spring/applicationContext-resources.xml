@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+		 <!-- 定义受环境影响易变的变量 -->
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+			<property name="ignoreResourceNotFound" value="true" />
+			<property name="locations">
+				<list>
+					<!-- 标准配置 -->
+					<value>classpath*:/application.properties</value>
+				</list>
+			</property>
+		</bean>
+	  <bean class="qlight.util.applicationContext.SpringBeanFactory">
+	  </bean>
+	  
+	 <bean  id= "dataSource" class= "org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property   name= "driverClassName"> 
+			<value>com.mysql.jdbc.Driver</value>			
+		</property> 
+		
+		<property  name= "url"> 
+			<value>jdbc:mysql://192.168.1.199:3306/ssm_qlight?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;autoReconnectForPools=false&amp;failOverReadOnly=false&amp;zeroDateTimeBehavior=convertToNull</value>
+		</property> 
+		
+		<property  name= "username"> 
+			<value>ssm</value>
+		</property> 
+		
+		<property  name= "password"> 
+			<value>ssm</value>
+		</property> 		
+		<property name="maxActive" value="100" />
+		<property name="maxIdle" value="0" />
+		<property name="maxWait" value="1000" />
+		<property name="removeAbandoned" value="true" />
+		<property name="logAbandoned" value="true" />
+		<property name="poolPreparedStatements" value="false" />
+		<property name="defaultAutoCommit" value="true" />
+	</bean>	
+	
+	<bean  id= "qldataSource"  parent="dataSource" > 
+	
+	</bean>
+		
+	<!-- IBatis SessionFactory -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" >
+	
+		<property name="configLocation">	
+
+			<bean id="cacheConfig" class="qlight.util.applicationContext.MyResource" singleton="false">
+				<constructor-arg index="0" value="/WEB-INF/config/ibatis/sql-map-config.xml"></constructor-arg>
+				<!-- 该路径是相对于WebRoot目录 -->
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- IBatis SessionFactory -->
+	<bean id="qlsqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" >
+	
+		<property name="configLocation">	
+			<bean  class="qlight.util.applicationContext.MyResource" singleton="false">
+				<constructor-arg index="0" value="/WEB-INF/config/ibatis/ql-sql-map-config.xml"></constructor-arg>
+				<!-- 该路径是相对于WebRoot目录 -->
+			</bean>
+		</property>
+	</bean>
+
+	
+	<!-- 数据分页接口 各种数据库必需设置不同的分页实现 -->
+	<bean id="sqlExecutor" class="qlight.util.page.LimitSqlExecutor">  
+        <property name="dialect">
+             <!-- bean class="qlight.util.page.SQLServerDialect" />   -->
+             <!-- bean class="qlight.util.page.SQLServer2005Dialect" />   -->
+             <!-- <bean class="qlight.util.page.OracleDialect" /> -->
+             <bean class="qlight.util.page.MySQLDialect" />
+             <!-- bean class="qlight.util.page.DB2Dialect" />   -->
+        </property>  
+    </bean>
+    
+	<bean id="sqlExecutor_sv" class="qlight.util.page.LimitSqlExecutor">  
+        <property name="dialect">
+            <bean class="qlight.util.page.SQLServerDialect" />  
+        </property>
+    </bean>    
+    
+
+</beans>

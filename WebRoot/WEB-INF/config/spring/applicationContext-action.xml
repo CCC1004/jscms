@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+			
+	<!-- 基础Action的配置 -->
+	<bean id="BaseActionBean" class="qlight.frames.web.action.BaseAction"  depends-on="baseManager" abstract="true">
+
+	</bean>		
+	<bean id="ListViewActionBean" class="qlight.frames.web.action.ListViewAction"  parent="BaseActionBean" singleton="false">
+	</bean>		
+	<bean id="ImportToExcelActionBean" class="qlight.frames.web.action.ImportToGridAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+	<bean id="ExportToExcelActionBean" class="qlight.frames.web.action.ExportToExcelAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+	<bean id="ListDataActionBean" class="qlight.frames.web.action.ListDataAction"  parent="BaseActionBean" singleton="false">
+	</bean>		
+	<bean id="InsertActionBean" class="qlight.frames.web.action.InsertAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+	<bean id="UpdateActionBean" class="qlight.frames.web.action.UpdateAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+	<bean id="DelActionBean" class="qlight.frames.web.action.DelAction"  parent="BaseActionBean" singleton="false">
+	</bean>			
+	<bean id="DelAllActionBean" class="qlight.frames.web.action.DelAllAction"  parent="BaseActionBean" singleton="false">
+	</bean>			
+	<bean id="ChartViewActionBean" class="qlight.frames.web.action.ChartViewAction"  parent="BaseActionBean" singleton="false">
+	</bean>			
+	<bean id="ChartDataActionBean" class="qlight.frames.web.action.ChartDataAction"  parent="BaseActionBean" singleton="false">
+	</bean>
+	<bean id="DynChartViewActionBean" class="qlight.frames.web.action.DynChartViewAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+	<bean id="DynChartDataActionBean" class="qlight.frames.web.action.DynChartDataAction"  parent="BaseActionBean" singleton="false">
+	</bean>		
+	<bean id="OrgTypeAction" class="qlight.frames.security.action.OrgTypeAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+	<bean id="UserSelectOrgAction" class="qlight.frames.security.action.UserSelectOrgAction"   singleton="false">
+	</bean>		
+	<bean id="UploadActionBean" class="qlight.frames.upload.action.UploadAction"  parent="BaseActionBean" singleton="false">
+	</bean>	
+
+	<bean id="absListDataActionBean" abstract="true"  class="qlight.frames.web.action.abstractListDataAction"  parent="ListDataActionBean" singleton="false">
+	</bean>	
+	
+	<bean id="AuthListDataActionBean" class="qlight.frames.security.action.authListDataAction"  parent="absListDataActionBean" singleton="false">
+	</bean>		
+	<bean id="AddAuthToResActionBean" class="qlight.frames.security.action.AddAuthToResAction"  parent="BaseActionBean" singleton="false"/>
+	<bean id="DelAuthFromResActionBean" class="qlight.frames.security.action.RemoveAuthFromResAction"  parent="BaseActionBean" singleton="false"/>
+	<bean id="RefreshAuthorities" class="qlight.frames.security.action.RefreshAuthoritiesMap"></bean>
+	<bean id="UpdateCurrentUserInfo" class="qlight.frames.security.action.UpdateCurrentUserInfo" singleton="false"></bean>
+	<bean id="GetMenuActionBean" class="qlight.frames.menu.action.GetMenuAction" singleton="false">
+		<property name="manager" ref="baseManager"></property>
+	</bean>
+	<bean id="NoticeAction" class="qlight.frames.notice.action.NoticeAction" singleton="false">
+		<property name="noticeService" ref="noticeService"></property>
+	</bean>
+	<bean id="FldlistAction" class="qlight.frames.code.action.FldlistAction"  parent="BaseActionBean" singleton="false">
+		<property name="fldlistService" ref="fldlistService"></property>
+	</bean>	
+	
+	<!-- 以下为自定义 -->
+	<bean id="TestActionBean" class="com.wh.test.action.TestAction"  parent="BaseActionBean" singleton="false">
+		<property name="userInfoService" ref="userInfoService"></property>
+	</bean>
+	
+</beans>

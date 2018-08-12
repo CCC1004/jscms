@@ -1,0 +1,25 @@
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig> 
+   <settings cacheModelsEnabled="true" enhancementEnabled="true" lazyLoadingEnabled="true" maxRequests="32" maxSessions="10" maxTransactions="5" useStatementNamespaces="true"/>  
+   <typeAlias alias="ehcache" type="qlight.frames.base.cache.IBatisEhCacheController"/>  
+   <typeAlias alias="outMap" type="qlight.frames.base.dao.ibatis.OutMap"/>  
+   <!--sqlMap resource="includes:mapping*.xml" / -->  
+   <!-- 公共配置，请勿删除 -->  
+   <sqlMap resource="qlight/frames/config/ibatis/SqlMapCommon.xml"/>  
+   <sqlMap resource="qlight/frames/menu/sqlmap/AU_OUTERAPP_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/menu/sqlmap/SYS_MENU_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/log/sqlmap/sys_log_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/code/sqlmap/FLDLIST_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/code/sqlmap/TABLIST_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/code/sqlmap/sys_code_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/message/sqlmap/sys_message_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/parameter/sqlmap/sys_parameter_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/notice/sqlmap/SYS_NOTICE_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/notice/sqlmap/SYS_TEMPLATE_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/notice/sqlmap/SYS_MAIL_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/sequence/sqlmap/SYS_SEQUENCE_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/code/sqlmap/SYS_DICT_SqlMap.xml"/>  
+   <sqlMap resource="qlight/frames/upload/sqlmap/sys_upload_SqlMap.xml"/>  
+   <!-- 以下为业务相关配置 -->  
+</sqlMapConfig>

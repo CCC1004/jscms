@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE exceptioninfo [
+	<!ELEMENT exceptioninfo (exception+) >
+	<!ATTLIST exceptioninfo debug CDATA #IMPLIED>
+	<!ELEMENT exception (messagecode,contextind?,loggingtype?,forwardURL?) >
+	<!ATTLIST exception name CDATA #REQUIRED>
+	<!ELEMENT messagecode (#PCDATA)>
+	<!ELEMENT contextind (#PCDATA)>
+	<!ELEMENT confirmationind (#PCDATA)>
+	<!ELEMENT loggingtype (#PCDATA)>
+	<!ELEMENT forwardURL (#PCDATA)>
+]>
+
+<!-- 
+	日志在不同模式下,记录的信息应该是不一样的
+	调试的时候,打印出详细的信息;发布的时候,打印友好的信息
+ -->
+
+<exceptioninfo debug="true">
+	<exception name="NoAreasFoundException">
+		<messagecode>expError.noAreasFound</messagecode>
+		<loggingtype>debug</loggingtype>
+		<forwardURL>/error.jsp</forwardURL>
+	</exception>
+	<exception name="ServiceActiveAtStoresException">
+		<messagecode>expError.serviceActiveAtStores</messagecode>     	
+     	<loggingtype>error</loggingtype>
+	</exception>
+	<exception name="ViocUniqueConstraintException">
+		<messagecode>expError.uniqueconstraint</messagecode>
+		<contextind>true</contextind>
+	</exception>
+</exceptioninfo>

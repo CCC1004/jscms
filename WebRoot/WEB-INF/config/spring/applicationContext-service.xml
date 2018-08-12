@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-lazy-init="false">	
+		<!-- 在BaseServiceImpl中有baseDAO的属性，将引用id=baseDao的bean作为参数注入 -->
+	<bean id="qlBaseService" class="qlight.frames.base.service.impl.BaseServiceImpl" abstract="true">		
+	</bean>
+	<bean id="baseManager"  parent="qlBaseService" singleton="true">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="qlbaseManager"  parent="qlBaseService" singleton="true">
+		<property name="baseDao" ref="qlbaseDao"></property>
+	</bean>	
+
+	<!-- codeservic接口 -->
+	<bean id="codeService" class="qlight.frames.code.service.CodeServiceImpl" />
+	<!-- 消息接口 -->
+	<bean id="messageService" class="qlight.frames.message.service.MessageServiceImpl" />
+	<!-- 参数接口 -->
+	<bean id="parameterService" class="qlight.frames.parameter.service.ParameterServiceImpl" />
+	
+	<!-- 权限接口 -->
+	<bean id="auAuthService" class="qlight.frames.security.service.impl.AuAuthServiceImpl">
+		<property name="auAuthDao" ref="auAuthDao"></property>
+	</bean>
+	
+	<!-- 获取用户拥有的组织接口-->
+	<bean id="userOrgList" class="qlight.frames.security.service.impl.UserOrgListServiceImpl">
+		<property name="auUserOrgDao" ref="auUserOrgDao"></property>
+	</bean>
+	 
+	<!-- 拦截角色修改时候的保存 -->
+	<bean id="beforeRoleSave" class="qlight.frames.security.service.impl.InterceptRoleSaveServiceImp">
+	</bean>	
+	
+	
+	<!-- AuUserinfo表的Service -->
+	<bean id="auUserinfoService" class="qlight.frames.security.service.impl.AuUserinfoServiceImpl">	
+		<property name="baseService" ref="qlbaseManager"></property>
+	</bean>
+	
+	<!-- AuRoles表的Service -->
+	<bean id="auRolesService" class="qlight.frames.security.service.impl.AuRolesServiceImpl">		
+		<property name="baseService" ref="qlbaseManager"></property>
+	</bean>
+	
+	<!-- AuResource表的Service -->
+	<bean id="auResourceService" class="qlight.frames.security.service.impl.AuResourceServiceImpl" >		
+		<property name="baseService" ref="qlbaseManager"></property>
+	</bean>
+	
+	<!-- AuOrganization表的Service -->
+	<bean id="auOrganizationService" class="qlight.frames.security.service.impl.AuOrganizationServiceImpl">
+		<property name="baseService" ref="qlbaseManager"></property>
+	</bean>	
+	
+	<!-- 用户与组织映射接口 -->
+	<bean id="organizationService" class="qlight.frames.security.service.impl.OrganizationServiceImpl">
+		<property name="auOrganizationDao" ref="auOrganizationDao"></property>
+		<property name="auUserOrgDao" ref="auUserOrgDao"></property>
+		<property name="auUserInfoDao" ref="auUserInfoDao"></property>
+		<property name="baseService" ref="qlbaseManager"></property>
+	</bean>			
+	
+	<bean id="noticeService" class="qlight.frames.notice.service.impl.NoticeServiceImpl" />		
+	
+	<!-- 当前用户相关信息接口 -->
+	<bean id="loginUserService" class="qlight.frames.security.service.impl.LoginUserServiceImpl">
+		<property name="auOrganizationDao" ref="auOrganizationDao"></property>
+		<property name="auUserOrgDao" ref="auUserOrgDao"></property>
+		<property name="auUserInfoDao" ref="auUserInfoDao"></property>
+		<property name="auAuthDao" ref="auAuthDao"></property>
+		<property name="userRoleDao" ref="auUserRoleDao"></property>		
+	</bean>
+	
+	<bean id="userDetailsService" class="qlight.frames.security.service.impl.UserDetailsServiceImpl">
+		<property name="userRoleDao" ref="auUserRoleDao"></property>
+		<property name="auOrganizationDao" ref="auOrganizationDao"></property>
+	</bean>		
+
+	<bean id="dictService" class="qlight.frames.code.service.DictServiceImpl"></bean>	
+
+	<!-- 数据字典维护 -->
+	<bean id="fldlistService" class="qlight.frames.code.service.FldlistServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>		
+	
+	<!-- 以下为自定义 -->
+	<bean id="userInfoService" class="com.wh.test.service.imp.UserInfoServiceImpl">
+		<property name="auUserInfoDao" ref="auUserInfoDao"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,44 @@
+body{ 
+	background-color: #ECEFF6;
+}
+table{ 
+	border-collapse:collapse; 
+	word-break:break-all;
+}
+table.table_title{ 
+	font-size:14px;
+}
+.table_title th{
+	text-align:right;
+	padding-right:5px;
+	font-weight:bold;
+	color:#225489;
+	background-color:#edf6f9;
+	width:20%;	
+	border:solid 1px #99bbe8; 
+	line-height:25px;
+}
+.table_title td{
+	border:solid 1px #99bbe8; 
+	background:#FFFFFF; 
+	line-height:25px; 
+	width:30%;
+	padding-left:5px;
+}
+.table_title td.inputtd{ 
+	border:solid 1px #a7a6aa; 
+	border-top-width:0; 
+	padding:6px; 
+	font-size:14px; 
+	background:#fff;
+}
+.inputtd input{ 
+	height:26px; 
+	width:70px; 
+	color:#fff; 
+	background:url(${pageContext.request.contextPath}/ywgl/ywtj/nianbao/images/sub.gif) no-repeat; 
+	border:none; 
+	margin-top:8px; 
+	cursor:pointer; 
+	margin:4px 2px 0 2px;
+}

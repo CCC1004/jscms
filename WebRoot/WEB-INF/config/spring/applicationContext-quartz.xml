@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+	<!-- 要调用的工作类 -->
+	<bean id="mailQuartzJob" class="qlight.frames.notice.quartz.MailQuartzJob">
+		<property name="mailSender" ref="qlmailSender"></property>
+		<property name="baseManager" ref="baseManager"></property>
+	</bean>
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="jobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="mailQuartzJob" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>work</value>
+		</property>
+	</bean>
+	<!-- 定义触发时间 -->
+	<bean id="doTime"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobtask" />
+		</property>
+		<!-- cron表达式 -->
+		<!-- 
+		表达式	 						含义
+		"0 0 12 * * ?"	 				每天中午十二点触发
+		"0 15 10 ? * *"	 				每天早上10：15触发
+		"0 15 10 * * ?"	 				每天早上10：15触发
+		"0 15 10 * * ? *"	 			每天早上10：15触发
+		"0 15 10 * * ? 2005"			2005年的每天早上10：15触发
+		"0 * 14 * * ?"	 				每天从下午2点开始到2点59分每分钟一次触发
+		"0 0/5 14 * * ?"	 			每天从下午2点开始到2：55分结束每5分钟一次触发
+		"0 0/5 14,18 * * ?"	 			每天的下午2点至2：55和6点至6点55分两个时间段内每5分钟一次触发
+		"0 0-5 14 * * ?"	 			每天14:00至14:05每分钟一次触发
+		"0 10,44 14 ? 3 WED"			三月的每周三的14：10和14：44触发
+		"0 15 10 ? * MON-FRI"			每个周一、周二、周三、周四、周五的10：15触发
+		"0 15 10 15 * ?"	 			每月15号的10：15触发
+		"0 15 10 L * ?"	 				每月的最后一天的10：15触发
+		"0 15 10 ? * 6L"	 			每月最后一个周五的10：15触发
+		"0 15 10 ? * 6L"	 			每月最后一个周五的10：15触发
+		"0 15 10 ? * 6L 2002-2005"	 	2002年至2005年的每月最后一个周五的10：15触发
+		"0 15 10 ? * 6#3"	 			每月的第三个周五的10：15触发
+		 -->
+		<property name="cronExpression">
+			<value>10 * * * * ?</value>
+		</property>
+	</bean>
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<bean id="startQuertz" lazy-init="true" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="doTime" />
+			</list>
+		</property>
+	</bean>
+</beans>
