@@ -57,8 +57,5 @@
 	</bean>	
 	
 	<!-- 以下为自定义 -->
-	<bean id="TestActionBean" class="com.wh.test.action.TestAction"  parent="BaseActionBean" singleton="false">
-		<property name="userInfoService" ref="userInfoService"></property>
-	</bean>
 	
 </beans>

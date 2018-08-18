@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="ssm_qlight"
+  name="jscms"
   id="myeclipse.1217301282687"
-  context-root="/ssm_qlight"
+  context-root="/jscms"
   j2ee-spec="1.4"
-  archive="ssm_qlight.war">
+  archive="jscms.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

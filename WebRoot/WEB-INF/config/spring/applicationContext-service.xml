@@ -85,9 +85,12 @@
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>		
 	
+	<!-- 以下为工具类 -->
+	<bean id="defdatetimeService" class="com.js.base.service.impl.DefDateTimeServiceImpl"></bean>	
+	<bean id="guidService" class="com.js.base.service.impl.GuidServiceImpl"></bean>	
+	
+	
+	
 	<!-- 以下为自定义 -->
-	<bean id="userInfoService" class="com.wh.test.service.imp.UserInfoServiceImpl">
-		<property name="auUserInfoDao" ref="auUserInfoDao"></property>
-	</bean>
 	
 </beans>

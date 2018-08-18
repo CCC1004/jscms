@@ -1,15 +1,10 @@
-<%@page language="java" pageEncoding="UTF-8" import="com.hbjj.websocket.WebSocketMessageServlet,qlight.frames.security.model.AuUserinfo"%>
+<%@page language="java" pageEncoding="UTF-8" import="qlight.frames.security.model.AuUserinfo"%>
 
 <%
 	AuUserinfo userInfo = (AuUserinfo)session.getAttribute("user");
 	String user = null;
 	if(userInfo != null){
 		 user = userInfo.getUsername();
-	}
-	if(user == null){
-		WebSocketMessageServlet.ONLINE_USER_COUNT ++;
-		//为用户生成昵称
-		user = "游客" + WebSocketMessageServlet.ONLINE_USER_COUNT;
 	}
 	//'ws://192.168.1.214:9080/WebSocket/message?user=' + user
 	String webSocketPath = "ws://"+request.getServerName()+":"+request.getServerPort() + request.getContextPath()+"/message?user=" + user ;

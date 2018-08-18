@@ -22,4 +22,9 @@
    <sqlMap resource="qlight/frames/code/sqlmap/SYS_DICT_SqlMap.xml"/>  
    <sqlMap resource="qlight/frames/upload/sqlmap/sys_upload_SqlMap.xml"/>  
    <!-- 以下为业务相关配置 -->  
+   <sqlMap resource="com/js/base/sqlmap/js_address_SqlMap.xml"/>
+   <sqlMap resource="com/js/base/sqlmap/js_job_SqlMap.xml"/>
+   <sqlMap resource="com/js/base/sqlmap/js_role_SqlMap.xml"/>
+   <sqlMap resource="com/js/base/sqlmap/js_type_SqlMap.xml"/>
+   <sqlMap resource="com/js/base/sqlmap/js_userinfo_SqlMap.xml"/>
 </sqlMapConfig>

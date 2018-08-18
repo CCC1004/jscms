@@ -34,5 +34,8 @@
    <include file="qlight/frames/code/strutsxml/struts-fldlist.xml"/>  
    <include file="qlight/onlinedev/strutsxml/struts-onlinedev.xml"/>  
    <!-- 以下为自定义配置 -->  
-   <include file="com/wh/test/strutsxml/struts-test.xml"/>  
+   <include file="com/js/base/strutsxml/struts-js_address.xml"/>
+   <include file="com/js/base/strutsxml/struts-js_job.xml"/>
+   <include file="com/js/base/strutsxml/struts-js_role.xml"/>
+   <include file="com/js/base/strutsxml/struts-js_type.xml"/>
 </struts>

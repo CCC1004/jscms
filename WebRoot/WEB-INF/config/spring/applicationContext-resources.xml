@@ -22,15 +22,15 @@
 		</property> 
 		
 		<property  name= "url"> 
-			<value>jdbc:mysql://192.168.1.199:3306/ssm_qlight?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;autoReconnectForPools=false&amp;failOverReadOnly=false&amp;zeroDateTimeBehavior=convertToNull</value>
+			<value>jdbc:mysql://192.168.1.194:3306/jscms?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;autoReconnectForPools=false&amp;failOverReadOnly=false&amp;zeroDateTimeBehavior=convertToNull</value>
 		</property> 
 		
 		<property  name= "username"> 
-			<value>ssm</value>
+			<value>jscms</value>
 		</property> 
 		
 		<property  name= "password"> 
-			<value>ssm</value>
+			<value>jscms</value>
 		</property> 		
 		<property name="maxActive" value="100" />
 		<property name="maxIdle" value="0" />

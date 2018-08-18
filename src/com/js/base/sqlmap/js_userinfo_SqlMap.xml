@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="JsUserinfo" >
+  <!--[qlight-generated]-->
+  <resultMap id="BaseResult" class="com.js.base.model.JsUserinfo" >
+    <result column="GUID" property="guid" jdbcType="CHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="INTEGER" />
+    <result column="SEX" property="sex" jdbcType="CHAR" />
+    <result column="ADDR_CD" property="addrCd" jdbcType="CHAR" />
+    <result column="ROLE_CD" property="roleCd" jdbcType="CHAR" />
+    <result column="JOB_CD" property="jobCd" jdbcType="CHAR" />
+    <result column="TYPE_CD" property="typeCd" jdbcType="CHAR" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="TS" property="ts" jdbcType="TIMESTAMP" />
+    <result column="NT" property="nt" jdbcType="VARCHAR" />
+  </resultMap>
+  <!--[qlight-generated]-->
+  <resultMap id="KeyResult" class="java.lang.String" >
+    <result column="GUID" property="guid" jdbcType="CHAR" />
+  </resultMap>
+  <!--[qlight-generated]-->
+  <select id="GetById" parameterClass="java.lang.String" resultMap="BaseResult" >
+    select * from js_userinfo
+    where GUID = #guid:CHAR#
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetByCondition" resultMap="BaseResult" parameterClass="qlight.frames.base.dao.ibatis.Condition" >
+    select * from js_userinfo
+    <isParameterPresent >
+      <include refid="QLightCommon.DynamicCondition" />
+      <isNotNull property="orderByClause" prepend="order by " >
+        $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetKeysByCondition" resultMap="KeyResult" parameterClass="qlight.frames.base.dao.ibatis.Condition" >
+    select GUID from js_userinfo
+    <isParameterPresent >
+      <include refid="QLightCommon.DynamicCondition" />
+      <isNotNull property="orderByClause" prepend="order by " >
+        $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetByProjection" resultClass="outMap" parameterClass="qlight.frames.base.dao.ibatis.ProjAndCond" remapResults="true" >
+    select $sqlString$ from js_userinfo
+    <include refid="QLightCommon.DynamicCondition" />
+    <isNotEmpty property="groupString" prepend="group by " >
+      $groupString$
+    </isNotEmpty>
+    <isNotNull property="orderByClause" prepend="order by " >
+      $orderByClause$
+    </isNotNull>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="Count" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultClass="java.lang.Integer" >
+    select count(*) from js_userinfo
+    <isParameterPresent >
+      <include refid="QLightCommon.DynamicCondition" />
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="CountByProj" parameterClass="qlight.frames.base.dao.ibatis.ProjAndCond" resultClass="java.lang.Integer" >
+    select count(*) from ( select $sqlString$ from js_userinfo
+    <include refid="QLightCommon.DynamicCondition" />
+    <isNotEmpty property="groupString" prepend="group by " >
+      $groupString$
+    </isNotEmpty>
+     ) grp_result
+  </select>
+  <!--[qlight-generated]-->
+  <insert id="Create" parameterClass="com.js.base.model.JsUserinfo" >
+    insert into js_userinfo (GUID, NAME, AGE, SEX, ADDR_CD, ROLE_CD, JOB_CD, TYPE_CD, STATUS, TS,
+      NT)
+    values (#guid:CHAR#, #name:VARCHAR#, #age:INTEGER#, #sex:CHAR#, #addrCd:CHAR#, #roleCd:CHAR#,
+      #jobCd:CHAR#, #typeCd:CHAR#, #status:CHAR#, #ts:TIMESTAMP#, #nt:VARCHAR#)
+  </insert>
+  <!--[qlight-generated]-->
+  <delete id="Delete" parameterClass="qlight.frames.base.dao.ibatis.Condition" >
+    delete  from js_userinfo
+    <isParameterPresent >
+      <include refid="QLightCommon.DynamicCondition" />
+    </isParameterPresent>
+  </delete>
+  <!--[qlight-generated]-->
+  <delete id="DeleteById" parameterClass="java.lang.String" >
+    delete from js_userinfo
+    where GUID = #guid:CHAR#
+  </delete>
+  <!--[qlight-generated]-->
+  <update id="Update" parameterClass="com.js.base.model.JsUserinfo" >
+    update js_userinfo
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="name" >
+        NAME = #name:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="age" >
+        AGE = #age:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="sex" >
+        SEX = #sex:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="addrCd" >
+        ADDR_CD = #addrCd:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="roleCd" >
+        ROLE_CD = #roleCd:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="jobCd" >
+        JOB_CD = #jobCd:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="typeCd" >
+        TYPE_CD = #typeCd:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="status" >
+        STATUS = #status:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="ts" >
+        TS = #ts:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="nt" >
+        NT = #nt:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where GUID = #guid:CHAR#
+  </update>
+  <!--[qlight-generated]-->
+  <update id="UpdateAll" parameterClass="com.js.base.model.JsUserinfo" >
+    update js_userinfo set 
+    NAME = #name:VARCHAR#,
+    AGE = #age:INTEGER#,
+    SEX = #sex:CHAR#,
+    ADDR_CD = #addrCd:CHAR#,
+    ROLE_CD = #roleCd:CHAR#,
+    JOB_CD = #jobCd:CHAR#,
+    TYPE_CD = #typeCd:CHAR#,
+    STATUS = #status:CHAR#,
+    TS = #ts:TIMESTAMP#,
+    NT = #nt:VARCHAR#
+    where GUID = #guid:CHAR#
+  </update>
+</sqlMap>

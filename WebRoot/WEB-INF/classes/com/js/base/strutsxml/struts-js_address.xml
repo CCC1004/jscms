@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="Js_address-ajax" extends="base-ajax" >
+	
+		<action name="js_addressListData" class="ListDataActionBean" method="listData" >
+			<param name="tableName">Js_address</param>
+			<param name="viewId">List</param>
+			<result name="listData" type="json" ></result>
+		</action>
+		
+		
+		<action name="js_addressDelete" class="DelActionBean" method="delete">
+			<param name="tableName">Js_address</param>
+			<result type="json" name="*"></result>
+		</action>						
+	</package>
+	
+	<package name="Js_address" extends="base">
+	
+		<action name="js_addressListView"
+			class="ListViewActionBean" method="listPage">
+			<param name="tableName">Js_address</param>
+			<param name="viewId">List</param>
+			<param name="ListDataAction">js_addressListData</param>
+			<result name="listPage">/basepage/listViewAjax.jsp</result>
+		</action>
+		
+		<action name="js_addressInsertView" class="InsertActionBean" method="addView">
+			<param name="tableName">Js_address</param>
+			<param name="viewId">Insert</param>
+			<param name="InsertAction">js_addressInsert</param>
+			<result name="addView">/basepage/addView.jsp</result>
+		</action>
+		
+		<action name="js_addressInsert" class="InsertActionBean" method="create">
+			<param name="tableName">Js_address</param>
+			<param name="viewId">Insert</param>
+			<result name="success" type="redirect">
+				${successURL}
+			</result>
+            <result name="input">/basepage/addView.jsp</result>
+		</action>
+				
+		<action name="js_addressUpdateView" class="UpdateActionBean" method="updateView">
+			<param name="tableName">Js_address</param>
+			<param name="viewId">Update</param>
+			<param name="UpdateAction">js_addressUpdate</param>
+			<result name="updateView">/basepage/updateView.jsp</result>
+		</action>
+
+		<action name="js_addressUpdate" class="UpdateActionBean" method="update">
+			<param name="tableName">Js_address</param>
+			<param name="viewId">Update</param>
+			<result name="success" type="redirect">
+				${successURL}
+			</result>
+            <result name="input">/basepage/updateView.jsp</result>
+		</action>		
+		
+
+	</package>
+</struts>

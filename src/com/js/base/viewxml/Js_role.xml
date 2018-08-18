@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tableApp xmlns="http://www.ewatersoft.com/QLight/1.6" table="Js_role" pk="GUID">
+  <listApp id="List" page="true" pageSize="20" title="角色列表" treeList="false" orderBy="SORT">
+    <advancedSelect>
+      <option id="GUID" type="input" msg="GUID" quickQuery="false" sequence="1"/>
+      <option id="ROLENAME" type="input" msg="角色名称" quickQuery="false" sequence="2"/>
+      <option id="STATUS" type="select" msg="状态" quickQuery="true" sequence="3">
+      	<key lookupDataSource="local:SHOW_STATUS" value="" id=""/>
+      </option>
+      <option id="SORT" type="input" msg="排序编码" quickQuery="false" sequence="4"/>
+      <option id="TS" type="input" msg="时间戳" quickQuery="false" sequence="5"/>
+      <option id="NT" type="input" msg="备注" quickQuery="false" sequence="6"/>
+    </advancedSelect>
+    <field>
+      <property id="GUID" sort="false" msg="CheckBox" type="checkBox"/>
+      <property id="GUID" sort="true" msg="GUID" type="data" width="300">
+        <link action="js_roleUpdateView" type="update"/>
+      </property>
+      <property id="ROLENAME" sort="true" msg="角色名称" type="data" width="150"/>
+      <property id="STATUS" sort="true" msg="状态" type="data" width="80">
+      	<key lookupDataSource="local:SHOW_STATUS" value="" id=""/>
+      </property>
+      <property id="SORT" sort="true" msg="排序编码" type="data" width="100"/>
+      <property id="TS" sort="true" msg="时间戳" type="data" width="200"/>
+      <property id="NT" sort="true" msg="备注" type="data" width="200"/>
+    </field>
+    <actionButton type="add" action="js_roleInsertView" msg="添加"/>
+    <actionButton type="delete" action="js_roleDelete" msg="删除" needSelect="&gt;=1"/>
+  </listApp>
+  <insertApp id="Insert" title="添加">
+    <option id="GUID" type="hidden" msg="GUID" sequence="0" defaultval="#service.guidService"/>
+    <option id="ROLENAME" type="input" msg="角色名称" sequence="1">
+    	<validate type="required"/>
+	</option>    
+    <option id="STATUS" type="select" msg="状态" sequence="2">
+    	<validate type="required"/>
+      	<key lookupDataSource="local:SHOW_STATUS" value="" id=""/>
+    </option>
+    <option id="SORT" type="input" msg="排序编码" sequence="3">
+    	<validate type="int"/>
+    	<validate type="length-max-3"/>
+    </option>
+    <option id="TS" type="hidden" msg="时间戳" sequence="4" defaultval="#service.defdatetimeService"/>
+    <option id="NT" type="textarea" msg="备注" sequence="5"/>
+    <actionButton type="save" action="" msg="保存"/>
+    <actionButton type="cancel" action="" msg="取消"/>
+  </insertApp>
+  <updateApp id="Update" title="更新">
+    <option id="GUID" type="input" msg="GUID" sequence="0" readonly="true" width="300"/>
+    <option id="ROLENAME" type="input" msg="角色名称" sequence="1">
+    	<validate type="required"/>
+	</option>    
+    <option id="STATUS" type="select" msg="状态" sequence="2">
+    	<validate type="required"/>
+      	<key lookupDataSource="local:SHOW_STATUS" value="" id=""/>
+    </option>
+    <option id="SORT" type="input" msg="排序编码" sequence="3">
+    	<validate type="int"/>
+    	<validate type="length-max-3"/>
+    </option>
+    <option id="TS" type="hidden" msg="时间戳" sequence="4" defaultval="#service.defdatetimeService"/>
+    <option id="NT" type="textarea" msg="备注" sequence="5"/>
+    <actionButton type="save" action="" msg="保存"/>
+    <actionButton type="cancel" action="" msg="取消"/>
+  </updateApp>
+</tableApp>

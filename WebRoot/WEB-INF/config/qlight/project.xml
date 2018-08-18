@@ -92,7 +92,18 @@
     <model id="Wrr" pojoClass="qlight.water.model.Wrr">
       <viewXml path="qlight/water/xmlview/Wrr.xml"/>
     </model>
-     <!-- 以上为公共配置，请勿删除 -->  
-     
+    <model id="Js_address" pojoClass="com.js.base.model.JsAddress">
+      <viewXml path="com/js/base/viewxml/Js_address.xml"/>
+    </model>
+    <model id="Js_job" pojoClass="com.js.base.model.JsJob">
+      <viewXml path="com/js/base/viewxml/Js_job.xml"/>
+    </model>
+    <model id="Js_role" pojoClass="com.js.base.model.JsRole">
+      <viewXml path="com/js/base/viewxml/Js_role.xml"/>
+    </model>
+    <model id="Js_type" pojoClass="com.js.base.model.JsType">
+      <viewXml path="com/js/base/viewxml/Js_type.xml"/>
+    </model>
+    <model id="Js_userinfo" pojoClass="com.js.base.model.JsUserinfo"/>
   </models>
 </project>

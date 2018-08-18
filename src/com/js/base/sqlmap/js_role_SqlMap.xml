@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="JsRole">
+  <!--[qlight-generated]-->
+  <resultMap class="com.js.base.model.JsRole" id="BaseResult">
+    <result column="GUID" jdbcType="CHAR" property="guid" />
+    <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="TS" jdbcType="TIMESTAMP" property="ts" />
+    <result column="NT" jdbcType="VARCHAR" property="nt" />
+    <result column="SORT" jdbcType="CHAR" property="sort" />
+  </resultMap>
+  <!--[qlight-generated]-->
+  <resultMap class="java.lang.String" id="KeyResult">
+    <result column="GUID" jdbcType="CHAR" property="guid" />
+  </resultMap>
+  <!--[qlight-generated]-->
+  <select id="GetById" parameterClass="java.lang.String" resultMap="BaseResult">
+    select * from js_role
+    where GUID = #guid:CHAR#
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetByCondition" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultMap="BaseResult">
+    select * from js_role
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+      <isNotNull prepend="order by " property="orderByClause">
+        $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetKeysByCondition" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultMap="KeyResult">
+    select GUID from js_role
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+      <isNotNull prepend="order by " property="orderByClause">
+        $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetByProjection" parameterClass="qlight.frames.base.dao.ibatis.ProjAndCond" remapResults="true" resultClass="outMap">
+    select $sqlString$ from js_role
+    <include refid="QLightCommon.DynamicCondition" />
+    <isNotEmpty prepend="group by " property="groupString">
+      $groupString$
+    </isNotEmpty>
+    <isNotNull prepend="order by " property="orderByClause">
+      $orderByClause$
+    </isNotNull>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="Count" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultClass="java.lang.Integer">
+    select count(*) from js_role
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="CountByProj" parameterClass="qlight.frames.base.dao.ibatis.ProjAndCond" resultClass="java.lang.Integer">
+    select count(*) from ( select $sqlString$ from js_role
+    <include refid="QLightCommon.DynamicCondition" />
+    <isNotEmpty prepend="group by " property="groupString">
+      $groupString$
+    </isNotEmpty>
+     ) grp_result
+  </select>
+  <!--[qlight-generated]-->
+  <insert id="Create" parameterClass="com.js.base.model.JsRole">
+    insert into js_role (GUID, ROLENAME, STATUS, TS, NT, SORT)
+    values (#guid:CHAR#, #rolename:VARCHAR#, #status:CHAR#, #ts:TIMESTAMP#, #nt:VARCHAR#,
+      #sort:CHAR#)
+  </insert>
+  <!--[qlight-generated]-->
+  <delete id="Delete" parameterClass="qlight.frames.base.dao.ibatis.Condition">
+    delete  from js_role
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+    </isParameterPresent>
+  </delete>
+  <!--[qlight-generated]-->
+  <delete id="DeleteById" parameterClass="java.lang.String">
+    delete from js_role
+    where GUID = #guid:CHAR#
+  </delete>
+  <!--[qlight-generated]-->
+  <update id="Update" parameterClass="com.js.base.model.JsRole">
+    update js_role
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="rolename">
+        ROLENAME = #rolename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="status">
+        STATUS = #status:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="ts">
+        TS = #ts:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="nt">
+        NT = #nt:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sort">
+        SORT = #sort:CHAR#
+      </isNotNull>
+    </dynamic>
+    where GUID = #guid:CHAR#
+  </update>
+  <!--[qlight-generated]-->
+  <update id="UpdateAll" parameterClass="com.js.base.model.JsRole">
+    update js_role set 
+    ROLENAME = #rolename:VARCHAR#,
+    STATUS = #status:CHAR#,
+    TS = #ts:TIMESTAMP#,
+    NT = #nt:VARCHAR#,
+    SORT = #sort:CHAR#
+    where GUID = #guid:CHAR#
+  </update>
+  </sqlMap>
