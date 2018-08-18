@@ -2,11 +2,14 @@
 
 1.登录信息维护
 角色管理
-
+QLListView_JS_ROLE.List.qact
 职业管理
-
+QLListView_JS_JOB.List.qact
 类型管理
-
+QLListView_JS_TYPE.List.qact
 地址管理
+QLListView_JS_ADDRESS.List.qact
 
+
+2.用户管理
 
