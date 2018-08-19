@@ -10,6 +10,7 @@
 			/WEB-INF/config/spring/applicationContext-resources.xml,
 			/WEB-INF/config/spring/applicationContext-dao.xml,
 			/WEB-INF/config/spring/applicationContext-service.xml,
+			/WEB-INF/config/spring/applicationContext-service-annotation.xml,
 			/WEB-INF/config/spring/applicationContext-transaction.xml,
 			/WEB-INF/config/spring/applicationContext-log.xml,
 			/WEB-INF/config/spring/applicationContext-action.xml,
