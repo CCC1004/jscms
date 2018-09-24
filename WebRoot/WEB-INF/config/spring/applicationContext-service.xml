@@ -90,7 +90,12 @@
 	<bean id="guidService" class="com.js.base.service.impl.GuidServiceImpl"></bean>	
 	
 	
-	
 	<!-- 以下为自定义 -->
+	<bean id="xjtjService" class="com.js.sjtj.service.impl.XjtjServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>		
+	<bean id="etdService" class="com.js.application.service.impl.ExcelToDocServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>		
 	
 </beans>

@@ -1,0 +1,92 @@
+/*mytree样式设置*/
+.myTree {
+    width: 150px;
+    height: 25px;
+    border-radius:5px;
+    padding-left: 3px;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #999;
+
+    border: 1px #ccc solid;
+    outline: none;
+}
+/*去除下拉框的按钮图标，再ie中太难看,而且这个只对ie起作用*/
+.myTree::-ms-expand {
+    display: none;
+}
+
+/*原来的option的样式*/
+.treeOption{
+    display: none;
+    border: none;
+}
+.treeOption:focus{
+    display: none;
+    border: none;
+}
+
+/*下拉框样式设置*/
+.myTreeSelectDiv{
+    width: 150px;
+    min-height: 0px;
+    height: auto;
+    max-height: 250px;
+    overflow-y:auto;
+    overflow-x:auto;
+    background-color:white;
+    position: absolute;
+    z-index: 9999;
+    display: none;
+    border: 1px #999 solid;
+    border-radius:4px;
+}
+
+.myTreeSelectDiv:focus{
+    border: 1px #999 solid;
+}
+
+/*单项内容框设置*/
+.myTreeSelectDivInnerDiv{
+    width: 100%;
+
+}
+
+/*选项框选项设置*/
+.myTreeSelectDivInnerDivChose{
+    width: 100%;
+    background-color: rgba(0,0,0,0);
+    padding: 3px 0px;
+}
+/*鼠标再选项的上方的时候的颜色裱花*/
+.myTreeSelectDivInnerDivChoseSelected{
+    background-color: #348EED;
+}
+
+/*折叠按钮样式设置*/
+.handSpan{
+    cursor: pointer;          /*不被鼠标选中*/
+    width: 5px;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    -khtml-user-select:none;
+    user-select:none;
+}
+
+/*显示字体样式设置*/
+.fontSpan{
+    -moz-user-select:none;    /*不被鼠标选中*/
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    -khtml-user-select:none;
+    user-select:none;
+    color: #999;
+    font-size: 12px;
+    white-space: nowrap;  /*强制span不换行*/
+}
+/*当前选项鼠标再上方的时候的字体颜色*/
+.fontSpanSelected{
+    color: white;
+}

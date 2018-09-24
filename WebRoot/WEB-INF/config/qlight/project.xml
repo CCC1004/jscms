@@ -105,5 +105,6 @@
       <viewXml path="com/js/base/viewxml/Js_type.xml"/>
     </model>
     <model id="Js_userinfo" pojoClass="com.js.base.model.JsUserinfo"/>
+    <model id="Table_describe" pojoClass="com.js.application.model.TableDescribe"/>
   </models>
 </project>

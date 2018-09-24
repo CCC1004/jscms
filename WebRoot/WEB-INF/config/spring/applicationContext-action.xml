@@ -57,5 +57,13 @@
 	</bean>	
 	
 	<!-- 以下为自定义 -->
+	<bean id="XjtjActionBean" class="com.js.sjtj.action.XjtjAction"  parent="BaseActionBean" singleton="false">
+		<property name="xjtjService" ref="xjtjService"></property>
+	</bean>	
+	<bean id="ExcelToDocActionBean" class="com.js.application.action.ExcelToDocAction"  parent="BaseActionBean" singleton="false">
+		<property name="etdService" ref="etdService"></property>
+	</bean>	
+	
+	
 	
 </beans>

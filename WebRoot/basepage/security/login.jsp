@@ -41,6 +41,7 @@ function submitLogin(){
 <div id="wrapperL">
    <div id="login2">
         <div><!--<img src="../images/login/logo.png" />--></div>
+        <center><font color="#ffffff"><h1 style="padding-left:50px;">后台管理系统</h1></font></center>
         <div class="loginC">
             <div class="contM">
             	<form  action="<%=request.getContextPath()%>/j_spring_security_check" method="post"  name="loginf">

@@ -18,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 *{ margin:0; padding:0;}
 html { height:100%; max-height:100%; border:0; background:#fff; font-size:12px;  font-family:Verdana,宋体; overflow: hidden;}
 body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
-
 .lightbox{width:300px;background:#FFFFFF;border:1px solid #ccc;line-height:25px; top:20%; left:20%;display: none;}
 .lightbox dt{background:#e4e4e4; padding:5px;color: blue;font-size: 11pt;}	
 .lightbox dd{background:#f8f8f8; padding:5px;font-size: 11pt; padding-left: 10px;}	
@@ -94,7 +93,6 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
 		    t.parentElement.className=cls;
 		}
 		
-
             function setStyle(index) {	
             	if(document.getElementById("treeTable") == null)
             		return;
@@ -149,7 +147,6 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
 					    alert('选择组织出错('+xmlHttp.status+')');
 					  }					
 					}
-
 				};	
 				xmlHttp.open("GET",url,true);
 				xmlHttp.send(null);			
@@ -173,13 +170,11 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
 				var tabh=0;
 				if(document.getElementById('ul').style.display != "none"  )
 					tabh=30;
-
 				document.getElementById('content').style.height=(cHeight-54-59-tabh)+"px";
 				document.getElementById('fraMain').style.height=(cHeight-54-59-tabh-2)+"px";
 			}
 			window.onresize=resetSize;	    	
 			
-
     	//initPage();
     </script>
 <table class="nav_bj" border="0" cellspacing="0" cellpadding="0"  style="width:100%;margin: 0px;" id="mainTable">
@@ -202,7 +197,7 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
 			    </td>
 			    <td align="right" style="padding-right: 20px;">
 			    	<font size="3" color="white">
-			    		欢迎您，${user.username }！<a href="j_spring_security_logout" target="_top" style="color:blue;">[注销]</a>
+			    		${userName}<a href="j_spring_security_logout" target="_top" style="color:blue;">[注销]</a>
 			    	</font>
 			    </td>
     		</tr>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="TableDescribe">
+  <!--[qlight-generated]-->
+  <resultMap class="com.js.application.model.TableDescribe" id="BaseResult">
+    <result column="guid" jdbcType="VARCHAR" property="guid" />
+    <result column="table_name" jdbcType="VARCHAR" property="tableName" />
+    <result column="table_ident" jdbcType="VARCHAR" property="tableIdent" />
+    <result column="index" jdbcType="INTEGER" property="index" />
+    <result column="fieldName" jdbcType="VARCHAR" property="fieldname" />
+    <result column="fieldIdent" jdbcType="VARCHAR" property="fieldident" />
+    <result column="charLength" jdbcType="VARCHAR" property="charlength" />
+    <result column="isNull" jdbcType="VARCHAR" property="isnull" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="pk" jdbcType="VARCHAR" property="pk" />
+    <result column="refNum" jdbcType="INTEGER" property="refnum" />
+  </resultMap>
+  <!--[qlight-generated]-->
+  <resultMap class="java.lang.String" id="KeyResult">
+    <result column="guid" jdbcType="VARCHAR" property="guid" />
+  </resultMap>
+  <!--[qlight-generated]-->
+  <select id="GetById" parameterClass="java.lang.String" resultMap="BaseResult">
+    select * from table_describe
+    where guid = #guid:VARCHAR#
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetByCondition" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultMap="BaseResult">
+    select * from table_describe
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+      <isNotNull prepend="order by " property="orderByClause">
+        $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetKeysByCondition" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultMap="KeyResult">
+    select guid from table_describe
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+      <isNotNull prepend="order by " property="orderByClause">
+        $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="GetByProjection" parameterClass="qlight.frames.base.dao.ibatis.ProjAndCond" remapResults="true" resultClass="outMap">
+    select $sqlString$ from table_describe
+    <include refid="QLightCommon.DynamicCondition" />
+    <isNotEmpty prepend="group by " property="groupString">
+      $groupString$
+    </isNotEmpty>
+    <isNotNull prepend="order by " property="orderByClause">
+      $orderByClause$
+    </isNotNull>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="Count" parameterClass="qlight.frames.base.dao.ibatis.Condition" resultClass="java.lang.Integer">
+    select count(*) from table_describe
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+    </isParameterPresent>
+  </select>
+  <!--[qlight-generated]-->
+  <select id="CountByProj" parameterClass="qlight.frames.base.dao.ibatis.ProjAndCond" resultClass="java.lang.Integer">
+    select count(*) from ( select $sqlString$ from table_describe
+    <include refid="QLightCommon.DynamicCondition" />
+    <isNotEmpty prepend="group by " property="groupString">
+      $groupString$
+    </isNotEmpty>
+     ) grp_result
+  </select>
+  <!--[qlight-generated]-->
+  <insert id="Create" parameterClass="com.js.application.model.TableDescribe">
+    insert into table_describe (guid, table_name, table_ident, index, fieldName, fieldIdent,
+      charLength, isNull, unit, pk, refNum)
+    values (#guid:VARCHAR#, #tableName:VARCHAR#, #tableIdent:VARCHAR#, #index:INTEGER#,
+      #fieldname:VARCHAR#, #fieldident:VARCHAR#, #charlength:VARCHAR#, #isnull:VARCHAR#,
+      #unit:VARCHAR#, #pk:VARCHAR#, #refnum:INTEGER#)
+  </insert>
+  <!--[qlight-generated]-->
+  <delete id="Delete" parameterClass="qlight.frames.base.dao.ibatis.Condition">
+    delete  from table_describe
+    <isParameterPresent>
+      <include refid="QLightCommon.DynamicCondition" />
+    </isParameterPresent>
+  </delete>
+  <!--[qlight-generated]-->
+  <delete id="DeleteById" parameterClass="java.lang.String">
+    delete from table_describe
+    where guid = #guid:VARCHAR#
+  </delete>
+  <!--[qlight-generated]-->
+  <update id="Update" parameterClass="com.js.application.model.TableDescribe">
+    update table_describe
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="tableName">
+        table_name = #tableName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="tableIdent">
+        table_ident = #tableIdent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="index">
+        index = #index:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldname">
+        fieldName = #fieldname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldident">
+        fieldIdent = #fieldident:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="charlength">
+        charLength = #charlength:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isnull">
+        isNull = #isnull:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unit">
+        unit = #unit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pk">
+        pk = #pk:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="refnum">
+        refNum = #refnum:INTEGER#
+      </isNotNull>
+    </dynamic>
+    where guid = #guid:VARCHAR#
+  </update>
+  <!--[qlight-generated]-->
+  <update id="UpdateAll" parameterClass="com.js.application.model.TableDescribe">
+    update table_describe set 
+    table_name = #tableName:VARCHAR#,
+    table_ident = #tableIdent:VARCHAR#,
+    index = #index:INTEGER#,
+    fieldName = #fieldname:VARCHAR#,
+    fieldIdent = #fieldident:VARCHAR#,
+    charLength = #charlength:VARCHAR#,
+    isNull = #isnull:VARCHAR#,
+    unit = #unit:VARCHAR#,
+    pk = #pk:VARCHAR#,
+    refNum = #refnum:INTEGER#
+    where guid = #guid:VARCHAR#
+  </update>
+  </sqlMap>

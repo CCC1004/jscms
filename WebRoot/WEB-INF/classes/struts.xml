@@ -38,4 +38,8 @@
    <include file="com/js/base/strutsxml/struts-js_job.xml"/>
    <include file="com/js/base/strutsxml/struts-js_role.xml"/>
    <include file="com/js/base/strutsxml/struts-js_type.xml"/>
+   
+   <include file="com/js/sjtj/strutsxml/struts-xjtj.xml"/>
+   <include file="com/js/application/strutsxml/struts-excel_to_doc.xml"/>
+   
 </struts>
