@@ -173,6 +173,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			location.href = "etdAction!toInsertIdent.qact?result=-1";
 		}
 		
+		//--exportDoc
+		function exportDoc(){
+			location.href = "etdAction!toExportDoc.qact?result=-1";
+		}
+		
 		
 	</script>
     
@@ -205,6 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        <button type="button" id="search_btn" class="frombtn" onclick="search()">查 询</button>
 					        <input type="reset" class="frombtn" style="width: 41.56px;" value="重置"/>
 					        <button type="button" class="frombtn" onclick="add()">添 加</button>
+					        <button type="button" class="frombtn" onclick="exportDoc()">导出DOC</button>
 					    </div>
 				    </div><!-- row end --> 
 				</form>

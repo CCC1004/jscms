@@ -87,16 +87,16 @@
 				xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
 				mc:Ignorable="w14 w15 w16se w16cid wp14">
 				<w:body>
+				<#list ideAndNmList as tb>
 					<w:p w:rsidR="007437AB" w:rsidRPr="005D4E2D" w:rsidRDefault="007437AB"
-						w:rsidP="007437AB" />
-					<w:p w:rsidR="007437AB" w:rsidRPr="008236DC" w:rsidRDefault="007437AB"
 						w:rsidP="007437AB">
+						<w:bookmarkStart w:id="0" w:name="_GoBack" />
+						<w:bookmarkEnd w:id="0" />
+					</w:p>
+					<w:p w:rsidR="007437AB" w:rsidRPr="008236DC" w:rsidRDefault="007437AB"
+						w:rsidP="00CC53E3">
 						<w:pPr>
 							<w:pStyle w:val="a4" />
-							<w:numPr>
-								<w:ilvl w:val="2" />
-								<w:numId w:val="1" />
-							</w:numPr>
 							<w:spacing w:before="40" w:after="40" w:line="300"
 								w:lineRule="auto" />
 							<w:outlineLvl w:val="2" />
@@ -112,7 +112,7 @@
 									w:hAnsiTheme="minorEastAsia" w:hint="eastAsia" />
 								<w:szCs w:val="21" />
 							</w:rPr>
-							<w:t>${name}</w:t>
+							<w:t>${tb.tableName}</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="007437AB" w:rsidRPr="008A0100" w:rsidRDefault="007437AB"
@@ -131,7 +131,7 @@
 									w:hAnsiTheme="minorEastAsia" w:hint="eastAsia" />
 								<w:szCs w:val="21" />
 							</w:rPr>
-							<w:t>a）用于存储${name}。</w:t>
+							<w:t>a）用于存储${tb.tableName}。</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="007437AB" w:rsidRPr="008A0100" w:rsidRDefault="007437AB"
@@ -158,7 +158,7 @@
 									w:hAnsiTheme="minorEastAsia" />
 								<w:szCs w:val="21" />
 							</w:rPr>
-							<w:t>${tableName}</w:t>
+							<w:t>${tb.tableIdent}</w:t>
 						</w:r>
 						<w:r>
 							<w:rPr>
@@ -293,7 +293,7 @@
 									w:hAnsiTheme="minorEastAsia" w:hint="eastAsia" />
 								<w:szCs w:val="21" />
 							</w:rPr>
-							<w:t>${name}</w:t>
+							<w:t>${tb.tableName}</w:t>
 						</w:r>
 						<w:r w:rsidRPr="008A0100">
 							<w:rPr>
@@ -595,8 +595,8 @@
 								</w:p>
 							</w:tc>
 						</w:tr>
-						
-						<#list sheetList as s>
+						<#list dataList as list>
+						<#if ident = list.tableIdent>
 						<w:tr w:rsidR="007437AB" w:rsidRPr="00806A0E" w:rsidTr="00555E45">
 							<w:trPr>
 								<w:trHeight w:val="255" />
@@ -630,7 +630,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>1</w:t>
+										<w:t><#if (list.indexnum)??>${list.indexnum}</#if></w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -662,7 +662,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>一</w:t>
+										<w:t>${list.fieldname}</w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -690,7 +690,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>ONE</w:t>
+										<w:t>${list.fieldident}</w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -718,7 +718,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>A</w:t>
+										<w:t>${list.charlength}</w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -750,7 +750,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>M</w:t>
+										<w:t>${list.isnull}</w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -782,7 +782,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>三</w:t>
+										<w:t>${list.unit}</w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -814,7 +814,7 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>X</w:t>
+										<w:t>${list.pk}</w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
@@ -846,13 +846,13 @@
 											<w:sz w:val="18" />
 											<w:szCs w:val="18" />
 										</w:rPr>
-										<w:t>3</w:t>
+										<w:t><#if (list.refnum)??>${list.refnum}</#if></w:t>
 									</w:r>
 								</w:p>
 							</w:tc>
 						</w:tr>
+						</#if>
 						</#list>
-						
 					</w:tbl>
 					<w:p w:rsidR="007437AB" w:rsidRPr="008A0100" w:rsidRDefault="007437AB"
 						w:rsidP="007437AB">
@@ -874,15 +874,17 @@
 							<w:t>d）各字段存储内容应符合下列规定：</w:t>
 						</w:r>
 					</w:p>
-					<w:p w:rsidR="007437AB" w:rsidRDefault="007437AB" w:rsidP="007437AB" />
-					<w:p w:rsidR="00B44E6E" w:rsidRPr="007437AB" w:rsidRDefault="00B44E6E" />
-					<w:sectPr w:rsidR="00B44E6E" w:rsidRPr="007437AB">
+					<w:p w:rsidR="003B5AD1" w:rsidRPr="00CC53E3" w:rsidRDefault="003B5AD1"
+						w:rsidP="003B5AD1" />
+					<w:p w:rsidR="00B44E6E" w:rsidRPr="003B5AD1" w:rsidRDefault="00B44E6E" />
+					<w:sectPr w:rsidR="00B44E6E" w:rsidRPr="003B5AD1">
 						<w:pgSz w:w="11906" w:h="16838" />
 						<w:pgMar w:top="1440" w:right="1800" w:bottom="1440"
 							w:left="1800" w:header="851" w:footer="992" w:gutter="0" />
 						<w:cols w:space="425" />
 						<w:docGrid w:type="lines" w:linePitch="312" />
 					</w:sectPr>
+				</#list>	
 				</w:body>
 			</w:document>
 		</pkg:xmlData>
@@ -922,14 +924,14 @@
 				xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
 				mc:Ignorable="w14 w15 w16se w16cid wp14">
 				<w:footnote w:type="separator" w:id="-1">
-					<w:p w:rsidR="00C83E42" w:rsidRDefault="00C83E42" w:rsidP="005F45F2">
+					<w:p w:rsidR="00474AFF" w:rsidRDefault="00474AFF" w:rsidP="005F45F2">
 						<w:r>
 							<w:separator />
 						</w:r>
 					</w:p>
 				</w:footnote>
 				<w:footnote w:type="continuationSeparator" w:id="0">
-					<w:p w:rsidR="00C83E42" w:rsidRDefault="00C83E42" w:rsidP="005F45F2">
+					<w:p w:rsidR="00474AFF" w:rsidRDefault="00474AFF" w:rsidP="005F45F2">
 						<w:r>
 							<w:continuationSeparator />
 						</w:r>
@@ -973,14 +975,14 @@
 				xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
 				mc:Ignorable="w14 w15 w16se w16cid wp14">
 				<w:endnote w:type="separator" w:id="-1">
-					<w:p w:rsidR="00C83E42" w:rsidRDefault="00C83E42" w:rsidP="005F45F2">
+					<w:p w:rsidR="00474AFF" w:rsidRDefault="00474AFF" w:rsidP="005F45F2">
 						<w:r>
 							<w:separator />
 						</w:r>
 					</w:p>
 				</w:endnote>
 				<w:endnote w:type="continuationSeparator" w:id="0">
-					<w:p w:rsidR="00C83E42" w:rsidRDefault="00C83E42" w:rsidP="005F45F2">
+					<w:p w:rsidR="00474AFF" w:rsidRDefault="00474AFF" w:rsidP="005F45F2">
 						<w:r>
 							<w:continuationSeparator />
 						</w:r>
@@ -1344,21 +1346,26 @@
 					<w:rsid w:val="000F6A0B" />
 					<w:rsid w:val="003114F2" />
 					<w:rsid w:val="00315F8C" />
+					<w:rsid w:val="003B5AD1" />
+					<w:rsid w:val="00474AFF" />
+					<w:rsid w:val="005B2D44" />
 					<w:rsid w:val="005F45F2" />
 					<w:rsid w:val="007437AB" />
 					<w:rsid w:val="00751C93" />
 					<w:rsid w:val="00785783" />
 					<w:rsid w:val="00801E85" />
 					<w:rsid w:val="008B7332" />
+					<w:rsid w:val="008D65E1" />
 					<w:rsid w:val="0097594A" />
 					<w:rsid w:val="009F4A35" />
 					<w:rsid w:val="00A0452E" />
+					<w:rsid w:val="00A57672" />
 					<w:rsid w:val="00AE506A" />
 					<w:rsid w:val="00B44E6E" />
-					<w:rsid w:val="00C83E42" />
-					<w:rsid w:val="00E71697" />
+					<w:rsid w:val="00CC53E3" />
 					<w:rsid w:val="00F3057B" />
 					<w:rsid w:val="00FE020E" />
+					<w:rsid w:val="00FF7F82" />
 				</w:rsids>
 				<m:mathPr>
 					<m:mathFont m:val="Cambria Math" />
@@ -1386,7 +1393,6 @@
 				</w:shapeDefaults>
 				<w:decimalSymbol w:val="." />
 				<w:listSeparator w:val="," />
-				<w14:docId w14:val="049AA02E" />
 				<w15:chartTrackingRefBased />
 				<w15:docId w15:val="{80D8F9D2-CFB1-4EDC-AF95-92D3BA3E9B5D}" />
 			</w:settings>
@@ -2499,9 +2505,9 @@
 				<dc:description />
 				<cp:lastModifiedBy>superC</cp:lastModifiedBy>
 				<cp:revision>2</cp:revision>
-				<dcterms:created xsi:type="dcterms:W3CDTF">2018-09-22T05:43:00Z
+				<dcterms:created xsi:type="dcterms:W3CDTF">2018-09-25T06:58:00Z
 				</dcterms:created>
-				<dcterms:modified xsi:type="dcterms:W3CDTF">2018-09-22T05:43:00Z
+				<dcterms:modified xsi:type="dcterms:W3CDTF">2018-09-25T06:58:00Z
 				</dcterms:modified>
 			</cp:coreProperties>
 		</pkg:xmlData>
@@ -2571,7 +2577,7 @@
 				xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"
 				xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
 				<Template>Normal.dotm</Template>
-				<TotalTime>1</TotalTime>
+				<TotalTime>0</TotalTime>
 				<Pages>1</Pages>
 				<Words>28</Words>
 				<Characters>163</Characters>

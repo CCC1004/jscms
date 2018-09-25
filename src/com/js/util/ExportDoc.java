@@ -55,13 +55,14 @@ public class ExportDoc {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-	}
-	
-	public static void main(String[] args) {
-		ExportDoc dh = new ExportDoc();
-		String filePath = "D:/ssqrs.doc";//导出doc文件的路径
-		String modelName = "ssqrs.xml";//模板名称
 	}
 	
 }

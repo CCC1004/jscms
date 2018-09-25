@@ -74,7 +74,7 @@ public class ExcelToDocAction extends BaseAction{
 	
 	
 	/**
-	 * 获取excel数据
+	 * 获取excel数据---存入doc模板中
 	 */
 	public Map<String, Object> gextEcelData(){
 		
@@ -82,12 +82,7 @@ public class ExcelToDocAction extends BaseAction{
 		/*
 		 * 获取所有所需的数据
 		 */
-		List<TableDescribe> tableDesList = readExcel.readXls(excelPath,tbList);
-		
-		
-		dataMap.put("name", null);
-		dataMap.put("tableName", null);
-		dataMap.put("sheelList", null);
+		dataMap = readExcel.readXlsToDoc(excelPath,tbList);
 		return dataMap;
 	}
 	
@@ -95,7 +90,7 @@ public class ExcelToDocAction extends BaseAction{
 	/**
 	 * 导出doc文件
 	 */
-	public void expWordFile(){
+	public String expWordFile(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
 
@@ -115,22 +110,24 @@ public class ExcelToDocAction extends BaseAction{
 		String docName = UUID.randomUUID().toString().trim().replaceAll("-", "");
 		String filePath =realPath+"/"+ docName+".doc";
 		
-		/*
-		 * 获取数据
-		 */
-		Map<String, Object> dataMap = gextEcelData();
+		try {
+			/*
+			 * 获取数据
+			 */
+			Map<String, Object> dataMap = gextEcelData();
+			
+			/*
+			 * 调用工具类，创建doc
+			 */
+			ExportDoc exp = new ExportDoc();
+			exp.createDoc("ssksjwd.xml", filePath, dataMap);//--创建doc
+			result = "1";
+		} catch (Exception e) {
+			result = "2";
+			e.printStackTrace();
+		}
 		
-		/*
-		 * 调用工具类，创建doc
-		 */
-		ExportDoc exp = new ExportDoc();
-		exp.createDoc("ssksjwd.xml", filePath, dataMap);//--创建doc
-		
-		/*
-		 * 导出doc文件
-		 */
-		
-		
+		return "toExportDoc";
 	}
 	
 
@@ -140,6 +137,10 @@ public class ExcelToDocAction extends BaseAction{
 	
 	public String toTableIdentList(){
 		return "toTableIdentList";
+	}
+	
+	public String toExportDoc(){
+		return "toExportDoc";
 	}
 
 	/**
