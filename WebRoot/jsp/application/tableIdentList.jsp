@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        },
 				        {
 				            title:'序号',
-				            field:'index',
+				            field:'indexnum',
 				        },
 				        {
 				            title:'字段名',
@@ -162,6 +162,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        height: tableHeight()
 		    })
 		})
+		
+		//--查询按钮事件
+		function search(){
+			$("#mytab").bootstrapTable('refresh', {url: "etdAction!tdListPage.qact"});
+		}
 		
 		//--添加
 		function add(){

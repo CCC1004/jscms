@@ -49,11 +49,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     	var result = "${result}";
     	$(function(){
-    		if(result != '1' && result != '-1'){
-    			swal({
-   				  type: 'error',
-   				  title: '保存失败！',
-   				})
+    		if(result != '-1'){
+    			if(result == '1'){
+    				swal({
+       				  type: 'success',
+       				  title: '保存成功！',
+       				})
+    			}
+    			else if(result == '3'){
+        			swal({
+         				  type: 'warning',
+         				  title: 'excel路径不能为空！',
+         				})
+        		}else if(result == '4'){
+        			swal({
+         				  type: 'warning',
+         				  title: '表标识符不能为空！',
+         				})
+        		}else{
+        			swal({
+         				  type: 'error',
+         				  title: '保存失败！',
+         				})
+        		}
     		}
     	});/* init---end */
     	
@@ -69,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		$("#td").append(str);
     		
     	}
-	    
+   		
     	//返回
     	function backTo(){
     		location.href = "etdAction!toTableIdentList.qact";
@@ -88,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <div class="newrow1">
 	            <div class="col-lg-2 col-md-2 col-lg-offset-3 col-md-offset-3"><span style="color:red">*</span>Excel路径：</div>
 	            <div class="col-lg-5 col-md-5">
-			      	<input type="text" class="new-input" id="excelPath" name="excelPath" required  placeholder="请输入Excel路径" autocomplete="off">
+			      	<input type="text" id="excelPath" name="excelPath" required value="E:\tableIdent.xls" class="new-input" placeholder="请输入Excel路径" autocomplete="off">
 	            </div>
 	         </div> 
 	        <div class="title">

@@ -46,8 +46,8 @@ public class ReadExcel {
 	        	if (hssfSheet == null) {
 	        	    continue;
 	        	}
-	        	// 循环行Row（从1开始，0为标题，不取）
-	        	for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
+	        	//-- 循环行Row（从2开始，0为标题，1为表头，不取）
+	        	for (int rowNum = 2; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
 	        		//行
 	        		HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 	        		if (hssfRow == null) {
@@ -84,7 +84,7 @@ public class ReadExcel {
 	 */
 	private TableDescribe getCell(HSSFRow hssfRow, String tb){
 		//获取表标识符
-		HSSFCell tableIdent = hssfRow.getCell(8);
+		HSSFCell tableIdent = hssfRow.getCell(7);
 		String ident = "";//表标识符
 		boolean flag = false;//是否为所需要的数据
 		if (tableIdent != null) {
@@ -104,23 +104,25 @@ public class ReadExcel {
 			/*
 			 * --获取每个单元格
 			 */
-			HSSFCell name = hssfRow.getCell(7);//表名
-			HSSFCell index = hssfRow.getCell(9);//序号
-			HSSFCell fieldName = hssfRow.getCell(10);//字段名
-			HSSFCell fieldIdent = hssfRow.getCell(11);//字段标识
-			HSSFCell charLength = hssfRow.getCell(12);//类型及长度
-			HSSFCell isNull = hssfRow.getCell(13);//可否为空
-			HSSFCell unit = hssfRow.getCell(14);//计量单位
-			HSSFCell pk = hssfRow.getCell(15);//主键
+			HSSFCell name = hssfRow.getCell(6);//表名
+			HSSFCell index = hssfRow.getCell(8);//序号
+			HSSFCell fieldName = hssfRow.getCell(9);//字段名
+			HSSFCell fieldIdent = hssfRow.getCell(10);//字段标识
+			HSSFCell charLength = hssfRow.getCell(11);//类型及长度
+			HSSFCell isNull = hssfRow.getCell(12);//可否为空
+			HSSFCell unit = hssfRow.getCell(13);//计量单位
+			HSSFCell pk = hssfRow.getCell(14);//主键
 			HSSFCell refNum = hssfRow.getCell(15);//索引号
 			
 			if (name != null) {
 				td.setTableName(getValue(name));
 			}
-			
+			//--由于该数字为序号，所以我们需要将double转换为int
 			if (index != null) {
-				if(getValue(index)!=null){
-					td.setIndex(Integer.valueOf(getValue(index)));
+				if(index.getCellType() == HSSFCell.CELL_TYPE_NUMERIC){//数字（double）
+					double value = index.getNumericCellValue();
+					System.out.println(value);
+					td.setIndexnum(new Integer((int) value));//强转为int,再转Integer
 				}
 			}
 			if (fieldName != null) {
@@ -142,8 +144,9 @@ public class ReadExcel {
 				td.setPk(getValue(pk));
 			}
 			if (refNum != null) {
-				if(getValue(refNum)!=null){
-					td.setRefnum(Integer.valueOf(getValue(refNum)));
+				if(refNum.getCellType() == HSSFCell.CELL_TYPE_NUMERIC){//数字（double）
+					double value = refNum.getNumericCellValue();
+					td.setRefnum(new Integer((int) value));//强转为int
 				}
 			}
 			

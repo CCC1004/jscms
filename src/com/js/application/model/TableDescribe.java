@@ -14,7 +14,7 @@ public class TableDescribe extends BaseModel {
 
     private String tableName;//表名
 
-    private Integer index;//序号
+    private Integer indexnum;//序号
 
     private String fieldname;//字段名
 
@@ -57,13 +57,13 @@ public class TableDescribe extends BaseModel {
         this.tableIdent = tableIdent;
     }
 
-    @Column(name="index")
-    public Integer getIndex() {
-        return index;
+    @Column(name="indexNum")
+    public Integer getIndexnum() {
+        return indexnum;
     }
 
-    public void setIndex(Integer index) {
-        this.index = index;
+    public void setIndexnum(Integer indexnum) {
+        this.indexnum = indexnum;
     }
 
     @Column(name="fieldName")

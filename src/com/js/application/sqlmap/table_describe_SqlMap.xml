@@ -6,7 +6,7 @@
     <result column="guid" jdbcType="VARCHAR" property="guid" />
     <result column="table_name" jdbcType="VARCHAR" property="tableName" />
     <result column="table_ident" jdbcType="VARCHAR" property="tableIdent" />
-    <result column="index" jdbcType="INTEGER" property="index" />
+    <result column="indexNum" jdbcType="INTEGER" property="indexnum" />
     <result column="fieldName" jdbcType="VARCHAR" property="fieldname" />
     <result column="fieldIdent" jdbcType="VARCHAR" property="fieldident" />
     <result column="charLength" jdbcType="VARCHAR" property="charlength" />
@@ -73,9 +73,9 @@
   </select>
   <!--[qlight-generated]-->
   <insert id="Create" parameterClass="com.js.application.model.TableDescribe">
-    insert into table_describe (guid, table_name, table_ident, index, fieldName, fieldIdent,
+    insert into table_describe (guid, table_name, table_ident, indexNum, fieldName, fieldIdent,
       charLength, isNull, unit, pk, refNum)
-    values (#guid:VARCHAR#, #tableName:VARCHAR#, #tableIdent:VARCHAR#, #index:INTEGER#,
+    values (#guid:VARCHAR#, #tableName:VARCHAR#, #tableIdent:VARCHAR#, #indexnum:INTEGER#,
       #fieldname:VARCHAR#, #fieldident:VARCHAR#, #charlength:VARCHAR#, #isnull:VARCHAR#,
       #unit:VARCHAR#, #pk:VARCHAR#, #refnum:INTEGER#)
   </insert>
@@ -101,8 +101,8 @@
       <isNotNull prepend="," property="tableIdent">
         table_ident = #tableIdent:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="index">
-        index = #index:INTEGER#
+      <isNotNull prepend="," property="indexnum">
+        indexNum = #indexnum:INTEGER#
       </isNotNull>
       <isNotNull prepend="," property="fieldname">
         fieldName = #fieldname:VARCHAR#
@@ -133,7 +133,7 @@
     update table_describe set 
     table_name = #tableName:VARCHAR#,
     table_ident = #tableIdent:VARCHAR#,
-    index = #index:INTEGER#,
+    indexNum = #indexnum:INTEGER#,
     fieldName = #fieldname:VARCHAR#,
     fieldIdent = #fieldident:VARCHAR#,
     charLength = #charlength:VARCHAR#,

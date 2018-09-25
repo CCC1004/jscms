@@ -67,8 +67,9 @@ public class ExcelToDocServiceImpl implements ExcelToDocService {
 		}else{
 			order = Order.desc(pm.getSort());
 		}
-		cond.addOrder(order);
 		cond.addOrder(Order.asc("table_ident"));//表标识符
+		cond.addOrder(Order.asc("indexnum"));//序号
+		cond.addOrder(order);
 		Page<TableDescribe> page = baseDao.page(TableDescribe.class,cond, pm.getPageNumber(), pm.getPageSize());
 		return page;
 	}

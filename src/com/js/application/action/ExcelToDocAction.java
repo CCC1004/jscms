@@ -37,6 +37,9 @@ public class ExcelToDocAction extends BaseAction{
 	
 	private String result;//返回结果
 	
+	//调用读取Excel方法，获取所需数据
+	private ReadExcel readExcel = new ReadExcel();
+	
 	private ExcelToDocService etdService;
 	
 	/**
@@ -45,12 +48,24 @@ public class ExcelToDocAction extends BaseAction{
 	 */
 	public String saveData(){
 		
-		//调用读取Excel方法，获取所需数据
-		ReadExcel readExcel = new ReadExcel();
-		List<TableDescribe> tableDesList = readExcel.readXls(excelPath,tbList);
+		if(excelPath!=""){
+			if(tbList!=null){
+				/*
+				 * 获取所有所需的数据
+				 */
+				List<TableDescribe> tableDesList = readExcel.readXls(excelPath,tbList);
+				/*
+				 * 保存至数据库 
+				 */
+				result = etdService.saveData(tableDesList);
+			}else{
+				result = "4";//表标识符不能为空
+			}
+		}else{
+			result = "3";//excel路径不能为空
+		}
 		//保存
-		result = etdService.saveData(tableDesList);
-		if(result.equals('1')){
+		if(result.equals(1)){
 			return "toTableIdentList";
 		}else{
 			return "toInsertIdent";
@@ -65,8 +80,9 @@ public class ExcelToDocAction extends BaseAction{
 		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		/*
-		 * 获取数据
+		 * 获取所有所需的数据
 		 */
+		List<TableDescribe> tableDesList = readExcel.readXls(excelPath,tbList);
 		
 		
 		dataMap.put("name", null);
