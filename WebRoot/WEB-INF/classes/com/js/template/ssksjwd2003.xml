@@ -454,13 +454,13 @@
 	w:h-ansi="宋体" /><wx:font wx:val="宋体" /><w:sz-cs w:val="21" /></w:rPr></w:pPr><w:r
 	wsp:rsidRPr="00F25682"><w:rPr><w:rFonts w:ascii="宋体" w:fareast="宋体"
 	w:h-ansi="宋体" w:hint="fareast" /><wx:font wx:val="宋体" /><w:sz-cs
-	w:val="21" /></w:rPr><w:t>表名</w:t></w:r></w:p><w:p wsp:rsidR="007437AB"
+	w:val="21" /></w:rPr><w:t>${tb.tableName}</w:t></w:r></w:p><w:p wsp:rsidR="007437AB"
 	wsp:rsidRPr="00F25682" wsp:rsidRDefault="007437AB" wsp:rsidP="007437AB"><w:pPr><w:spacing
 	w:line="300" w:line-rule="auto" /><w:rPr><w:rFonts w:ascii="宋体"
 	w:h-ansi="宋体" /><wx:font wx:val="宋体" /><w:sz-cs w:val="21" /></w:rPr></w:pPr><w:r
 	wsp:rsidRPr="00F25682"><w:rPr><w:rFonts w:ascii="宋体" w:h-ansi="宋体"
 	w:hint="fareast" /><wx:font wx:val="宋体" /><w:sz-cs
-	w:val="21" /></w:rPr><w:t>a）用于存储表名。</w:t></w:r></w:p><w:p
+	w:val="21" /></w:rPr><w:t>a）用于存储${tb.tableName}。</w:t></w:r></w:p><w:p
 	wsp:rsidR="007437AB" wsp:rsidRPr="00F25682" wsp:rsidRDefault="007437AB"
 	wsp:rsidP="007437AB"><w:pPr><w:spacing w:line="300" w:line-rule="auto" /><w:rPr><w:rFonts
 	w:ascii="宋体" w:h-ansi="宋体" /><wx:font wx:val="宋体" /><w:sz-cs
@@ -468,7 +468,7 @@
 	w:ascii="宋体" w:h-ansi="宋体" w:hint="fareast" /><wx:font wx:val="宋体" /><w:sz-cs
 	w:val="21" /></w:rPr><w:t>b）表标识：</w:t></w:r><w:r wsp:rsidR="00AE506A"
 	wsp:rsidRPr="00F25682"><w:rPr><w:rFonts w:ascii="宋体" w:h-ansi="宋体" /><wx:font
-	wx:val="宋体" /><w:sz-cs w:val="21" /></w:rPr><w:t>B_R_B</w:t></w:r><w:r
+	wx:val="宋体" /><w:sz-cs w:val="21" /></w:rPr><w:t>${tb.tableIdent}</w:t></w:r><w:r
 	wsp:rsidRPr="00F25682"><w:rPr><w:rFonts w:ascii="宋体" w:h-ansi="宋体"
 	w:hint="fareast" /><wx:font wx:val="宋体" /><w:sz-cs
 	w:val="21" /></w:rPr><w:t> 。</w:t></w:r></w:p><w:p wsp:rsidR="007437AB"
@@ -507,7 +507,7 @@
 	w:val="21" /></w:rPr><w:fldChar w:fldCharType="end" /></w:r><w:r
 	wsp:rsidRPr="00F25682"><w:rPr><w:rFonts w:ascii="宋体" w:h-ansi="宋体"
 	w:hint="fareast" /><wx:font wx:val="宋体" /><w:sz-cs
-	w:val="21" /></w:rPr><w:t>-1  表名字段定义</w:t></w:r></w:p><w:tbl><w:tblPr><w:tblW
+	w:val="21" /></w:rPr><w:t>-1  ${tb.tableName}字段定义</w:t></w:r></w:p><w:tbl><w:tblPr><w:tblW
 	w:w="8900" w:type="dxa" /><w:jc w:val="center" /><w:tblBorders><w:top
 	w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" /><w:left
 	w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" /><w:bottom
@@ -584,7 +584,11 @@
 	w:val="0" /><w:sz w:val="18" /><w:sz-cs w:val="18" /></w:rPr></w:pPr><w:r
 	wsp:rsidRPr="00F25682"><w:rPr><w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"
 	w:hint="fareast" /><wx:font wx:val="宋体" /><w:kern w:val="0" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>索引序号</w:t></w:r></w:p></w:tc></w:tr><w:tr
+	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>索引序号</w:t></w:r></w:p></w:tc>
+	</w:tr>
+	<#list dataList as list>
+	<#if ident = list.tableIdent>
+	<w:tr
 	wsp:rsidR="007437AB" wsp:rsidRPr="00806A0E" wsp:rsidTr="00555E45"><w:trPr><w:trHeight
 	w:val="255" /><w:jc w:val="center" /></w:trPr><w:tc><w:tcPr><w:tcW
 	w:w="705" w:type="dxa" /><w:vAlign w:val="center" /></w:tcPr><w:p
