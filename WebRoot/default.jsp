@@ -76,6 +76,7 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
     		//pageReInit(3);
     		//pageReInit(4);
     		//document.getElementById('time').innerHTML="今天是"+new Date().toLocaleDateString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());    		
+    		setInterval("document.getElementById('time').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",100);
     		<s:if test="#session.UseOrgId == null && orgList.size >1">
 			showOrgSelect();    		
 			</s:if>
@@ -177,6 +178,7 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
 			
     	//initPage();
     </script>
+    
 <table class="nav_bj" border="0" cellspacing="0" cellpadding="0"  style="width:100%;margin: 0px;" id="mainTable">
 
   <tr style="width:100%;">
@@ -197,8 +199,10 @@ body{ height:100%; max-height:100%; overflow:hidden; border:0; text-align:left;}
 			    </td>
 			    <td align="right" style="padding-right: 20px;">
 			    	<font size="3" color="white">
-			    		${userName}<a href="j_spring_security_logout" target="_top" style="color:blue;">[注销]</a>
+			    		${userName}
+			    		<a href="j_spring_security_logout" target="_top" style="color:blue;">[注销]</a>
 			    	</font>
+			    	<div id="time" style="padding-top: 3px;"></div>
 			    </td>
     		</tr>
     	</table>

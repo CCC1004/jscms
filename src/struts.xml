@@ -41,5 +41,6 @@
    
    <include file="com/js/sjtj/strutsxml/struts-xjtj.xml"/>
    <include file="com/js/application/strutsxml/struts-excel_to_doc.xml"/>
+   <include file="com/js/activiti/strutsxml/struts-work_flow.xml"/>
    
 </struts>

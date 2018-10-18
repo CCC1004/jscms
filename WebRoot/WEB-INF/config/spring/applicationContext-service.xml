@@ -97,5 +97,8 @@
 	<bean id="etdService" class="com.js.application.service.impl.ExcelToDocServiceImpl">
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>		
+	<bean id="workFlowService" class="com.js.activiti.service.impl.WorkFlowServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>		
 	
 </beans>

@@ -63,7 +63,9 @@
 	<bean id="ExcelToDocActionBean" class="com.js.application.action.ExcelToDocAction"  parent="BaseActionBean" singleton="false">
 		<property name="etdService" ref="etdService"></property>
 	</bean>	
-	
+	<bean id="WorkFlowActionBean" class="com.js.activiti.action.WorkFlowAction"  parent="BaseActionBean" singleton="false">
+		<property name="workFlowService" ref="workFlowService"></property>
+	</bean>	
 	
 	
 </beans>
